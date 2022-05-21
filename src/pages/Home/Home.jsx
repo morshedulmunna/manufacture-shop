@@ -1,13 +1,9 @@
 import React from "react";
-import useTitle from "../../helper/useTitle";
+import { useTitle } from "../../helper";
 
 const Home = () => {
   useTitle("Alliance Inc");
-  return (
-    <div>
-      <h1>This is Home 🚀</h1>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Home;

@@ -3,23 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { RiBarChartHorizontalFill } from "react-icons/ri";
 import { IoMdConstruct } from "react-icons/io";
+import { GlobalCSS } from "../../helper";
 
 const Navbar = () => {
   // console.log(user);
 
-  const styles = {
-    header:
-      "bg-gray-50 relative z-20 border-b bg-white px-6 lg:container mx-auto md:px-12 lg:px-6 lg:py-1 z-20",
-    nav: "flex items-center justify-between",
-    logoWrapper:
-      "flex justify-center items-center text-orange-600 cursor-pointer",
-    logoicon: "text-2xl pr-1",
-    logoName: "text-xl font-bold",
-  };
-
   return (
     <>
-      <header className={styles.header}>
+      <header className={`${styles.header} ${GlobalCSS.container}`}>
         <div className={styles.nav}>
           <Link to="/">
             <div className={styles.logoWrapper}>
@@ -46,9 +37,9 @@ const Navbar = () => {
               </i>
             </label>
 
-            <div className="peer-checked:translate-x-0 fixed inset-0 w-[calc(100%-3.5rem)] translate-x-[-100%] bg-white border-r shadow-xl transition duration-200 lg:border-r-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0">
+            <div className="peer-checked:translate-x-0 fixed inset-0 w-[calc(100%-3.5rem)] translate-x-[-100%] bg-white border-r shadow-xl transition duration-200 lg:border-r-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0 sm:mt-11 lg:mt-0">
               <div className="flex flex-col h-full justify-between lg:items-center lg:flex-row">
-                <ul className="px-6 pt-12 text-gray-700 space-y-5 md:px-12 lg:space-y-0 lg:flex lg:space-x-12 lg:pt-0">
+                <ul className="px-6 pt-4 text-gray-700 space-y-5 md:px-12 lg:space-y-0 lg:flex lg:space-x-12 lg:pt-0">
                   <li>
                     <Link
                       to="/"
@@ -79,3 +70,12 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const styles = {
+  header: "bg-gray-50 relative border-b bg-white z-20 pt-2",
+  nav: "flex items-center justify-between",
+  logoWrapper:
+    "flex justify-center items-center text-orange-600 cursor-pointer",
+  logoicon: "text-2xl pr-1",
+  logoName: "text-xl font-bold",
+};
