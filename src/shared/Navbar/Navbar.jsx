@@ -47,7 +47,7 @@ const Navbar = () => {
               className="peer hidden"
             />
             <label htmlFor="hamburger" className={styles.hambager}>
-              <i className="text-xl text-primary">
+              <i className="text-xl text-orange-700 ">
                 <RiBarChartHorizontalFill />
               </i>
             </label>
@@ -66,7 +66,7 @@ const Navbar = () => {
 
                 <div className={styles.loginArea}>
                   <Link to="login" className={styles.loginBTN}>
-                    Log in
+                    Sign in
                   </Link>
                 </div>
               </div>
