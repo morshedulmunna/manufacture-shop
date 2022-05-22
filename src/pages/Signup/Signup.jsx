@@ -1,18 +1,56 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GrGoogle } from "react-icons/gr";
 import { useForm } from "react-hook-form";
+import auth from "../../firebase/firebaseInit";
+import Loader from "../../helper/Loader";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 
 const Signup = () => {
+  //
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  if (user || gUser) {
+    navigate(from, { replace: true });
+  }
+
+  let signInError;
+  if (loading || gLoading || updating) {
+    return <Loader />;
+  }
+
+  if (error || gError || updateError) {
+    signInError = (
+      <p className="text-red-500">
+        <small>
+          {error?.message || gError?.message || updateError?.message}
+        </small>
+      </p>
+    );
+  }
+
+  // Collected Data From Input
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
   };
+
   return (
     <>
       <section className="bg-[#F4F7FF] ">
@@ -115,6 +153,7 @@ const Signup = () => {
                       )}
                     </label>
                   </div>
+                  {signInError}
                   <div className="mb-10">
                     <input
                       type="submit"
@@ -125,7 +164,10 @@ const Signup = () => {
                 </form>
                 <p className="text-base mb-6 text-[#adadad]">Connect With</p>
                 <ul className="flex justify-between -mx-2 mb-12">
-                  <li className="px-2 w-full">
+                  <li
+                    onClick={() => signInWithGoogle()}
+                    className="px-2 w-full"
+                  >
                     <Link to="#" className={styles.googleBtn}>
                       <span className="mr-2">
                         <GrGoogle />

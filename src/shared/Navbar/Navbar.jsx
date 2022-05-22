@@ -4,10 +4,14 @@ import { Link } from "react-router-dom";
 import { RiBarChartHorizontalFill } from "react-icons/ri";
 import { IoMdConstruct } from "react-icons/io";
 import { GlobalCSS } from "../../helper";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebaseInit";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
-  // console.log(user);
+  const [user] = useAuthState(auth);
 
+  console.log(user);
   const navManu = [
     {
       id: 1,
@@ -65,9 +69,22 @@ const Navbar = () => {
                 </ul>
 
                 <div className={styles.loginArea}>
-                  <Link to="login" className={styles.loginBTN}>
-                    Sign in
-                  </Link>
+                  {user ? (
+                    <Link
+                      onClick={() => {
+                        signOut(auth);
+                        localStorage.removeItem("accessToken");
+                      }}
+                      to="login"
+                      className={styles.loginBTN}
+                    >
+                      Sign out
+                    </Link>
+                  ) : (
+                    <Link to="login" className={styles.loginBTN}>
+                      Sign in
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

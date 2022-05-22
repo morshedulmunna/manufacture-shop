@@ -1,19 +1,49 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GrGoogle } from "react-icons/gr";
 import { useForm } from "react-hook-form";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebaseInit";
+import Loader from "../../helper/Loader";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data.email);
-  };
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+  if (user || gUser) {
+    navigate(from, { replace: true });
+  }
 
+  if (loading || gLoading) {
+    return <Loader />;
+  }
+
+  let signInError;
+  if (error || gError) {
+    signInError = (
+      <p className="text-red-500">
+        <small>{error?.message || gError?.message}</small>
+      </p>
+    );
+  }
+
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(data.email, data.password);
+  };
   return (
     <>
       <section className="bg-[#F4F7FF] ">
@@ -90,6 +120,7 @@ const Login = () => {
                       )}
                     </label>
                   </div>
+                  {signInError}
                   <div className="mb-10">
                     <input
                       type="submit"
@@ -101,7 +132,11 @@ const Login = () => {
                 <p className="text-base mb-6 text-[#adadad]">Connect With</p>
                 <ul className="flex justify-between -mx-2 mb-12">
                   <li className="px-2 w-full">
-                    <Link to="#" className={styles.googleBtn}>
+                    <Link
+                      onClick={() => signInWithGoogle()}
+                      to="#"
+                      className={styles.googleBtn}
+                    >
                       <span className="mr-2">
                         <GrGoogle />
                       </span>

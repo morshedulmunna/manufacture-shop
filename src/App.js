@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import { Routes, Route } from "react-router-dom";
 import { Footer, Navbar } from "./shared/index";
 import { Home, Login, Signup } from "./pages/index";
@@ -12,6 +13,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer />
+      <Toaster position="top-right" reverseOrder={false} />
     </>
   );
 }
