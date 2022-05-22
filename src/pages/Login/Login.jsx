@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GrGoogle } from "react-icons/gr";
 import { useForm } from "react-hook-form";
@@ -10,7 +11,7 @@ import auth from "../../firebase/firebaseInit";
 import Loader from "../../helper/Loader";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
@@ -26,6 +27,7 @@ const Login = () => {
   let from = location.state?.from?.pathname || "/";
   if (user || gUser) {
     navigate(from, { replace: true });
+    toast.success("Sign In Successfull");
   }
 
   if (loading || gLoading) {

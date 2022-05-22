@@ -1,7 +1,7 @@
 import React from "react";
 import "./Banner.css";
-import banner from "../../../assets/images/banner.jpg";
-import { GlobalCSS } from "../../../helper";
+// import banner from "../../../assets/images/banner.jpg";
+// import { GlobalCSS } from "../../../helper";
 
 const Banner = () => {
   return (
@@ -25,6 +25,6 @@ const Banner = () => {
 
 export default Banner;
 
-const styles = {
-  bannerText: `flex items-center justify-center h-[100vh] flex-col`,
-};
+// const styles = {
+//   bannerText: `flex items-center justify-center h-[100vh] flex-col`,
+// };
