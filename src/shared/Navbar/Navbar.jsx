@@ -82,7 +82,7 @@ export default Navbar;
 
 // All Style Object Here====>>
 const styles = {
-  header: "bg-gray-50 relative border-b bg-white z-20 pt-2",
+  header: "bg-gray-50 relative border-b bg-white z-20 pt-2 ",
   nav: "flex items-center justify-between",
   logoWrapper:
     "flex justify-center items-center text-orange-600 cursor-pointer",

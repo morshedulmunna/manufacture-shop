@@ -6,52 +6,55 @@ const Footer = () => {
   return (
     <div className="bg-accent">
       <footer class={` ${GlobalCSS.container}`}>
-        <div className="footer p-10 text-base-content flex justify-between">
-          <div>
-            <span class="footer-title">Services</span>
-            <Link to="#" class="link link-hover">
-              Branding
-            </Link>
-            <Link to="#" class="link link-hover">
-              Design
-            </Link>
-            <Link to="#" class="link link-hover">
-              Marketing
-            </Link>
-            <Link to="#" class="link link-hover">
-              Advertisement
-            </Link>
+        <div className="flex justify-between items-center flex-col lg:flex-row md:flex-row">
+          <div className="footer p-10 text-base-content flex justify-between">
+            <div>
+              <span class="footer-title">Services</span>
+              <Link to="#" class="link link-hover">
+                Branding
+              </Link>
+              <Link to="#" class="link link-hover">
+                Design
+              </Link>
+              <Link to="#" class="link link-hover">
+                Marketing
+              </Link>
+              <Link to="#" class="link link-hover">
+                Advertisement
+              </Link>
+            </div>
+            <div>
+              <span class="footer-title">Company</span>
+              <Link to="#" class="link link-hover">
+                About us
+              </Link>
+              <Link to="#" class="link link-hover">
+                Contact
+              </Link>
+              <Link to="#" class="link link-hover">
+                Jobs
+              </Link>
+              <Link to="#" class="link link-hover">
+                Press kit
+              </Link>
+            </div>
+            <div>
+              <span class="footer-title">Legal</span>
+              <Link to="#" class="link link-hover">
+                Terms of use
+              </Link>
+              <Link to="#" class="link link-hover">
+                Privacy policy
+              </Link>
+              <Link to="#" class="link link-hover">
+                Cookie policy
+              </Link>
+            </div>
           </div>
-          <div>
-            <span class="footer-title">Company</span>
-            <Link to="#" class="link link-hover">
-              About us
-            </Link>
-            <Link to="#" class="link link-hover">
-              Contact
-            </Link>
-            <Link to="#" class="link link-hover">
-              Jobs
-            </Link>
-            <Link to="#" class="link link-hover">
-              Press kit
-            </Link>
-          </div>
-          <div>
-            <span class="footer-title">Legal</span>
-            <Link to="#" class="link link-hover">
-              Terms of use
-            </Link>
-            <Link to="#" class="link link-hover">
-              Privacy policy
-            </Link>
-            <Link to="#" class="link link-hover">
-              Cookie policy
-            </Link>
-          </div>
-          <div>
+          {/*  */}
+          <div className="w-full mb-5 lg:w-fit md:w-fit">
             <span class="footer-title">Newsletter</span>
-            <div class="form-control w-80">
+            <div class="form-control lg:w-80 md:w-80 w-full">
               <label class="label">
                 <span class="label-text">Enter your email address</span>
               </label>
@@ -67,6 +70,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
+          {/*  */}
         </div>
         <div>
           <div class="flex items-center justify-center">
