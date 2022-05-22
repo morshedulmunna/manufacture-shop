@@ -54,7 +54,7 @@ const Home = () => {
       <div className={`${GlobalCSS.container} `}>
         <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-col-1 gap-12 md:p-0 place-items-center mt-6">
           {companyProfile.map((profile) => (
-            <CompanyProfile profile={profile} />
+            <CompanyProfile key={profile.id} profile={profile} />
           ))}
         </div>
         <h1 className="mt-12 text-black font-bold text-3xl ">

@@ -118,7 +118,7 @@ const Signup = () => {
                   <div className="mb-10">
                     <input
                       type="submit"
-                      value="Sign In"
+                      value="Sign Up"
                       className={styles.signInBTN}
                     />
                   </div>
@@ -165,7 +165,7 @@ const styles = {
   loginWrapper: ` max-w-[525px] mx-auto text-center bg-white rounded-lg relative overflow-hidden py-16 px-10 sm:px-12 md:px-[60px]`,
   loginInput: `text-black w-full rounded-md border py-3 px-5 text-base text-body-color placeholder-[#b8b8b8] outline-none focus-visible:shadow-none focus:border-primary`,
   passwordInput: `text-black rounded-md w-full border py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus-visible:shadow-none focus:border-primary`,
-  signInBTN: ` text-black font-bold w-full rounded-md border bordder-primary py-3 px-5 bg-primary cursor-pointer hover:bg-opacity-90 transition`,
+  signInBTN: ` text-black font-bold w-full rounded-md border bordder-primary py-3 px-5 bg-[#EA4335] cursor-pointer hover:bg-opacity-90 transition`,
   googleBtn: `flex h-11 items-center justify-center rounded-md bg-[#EA4335] hover:bg-opacity-90`,
   forgetPass: `text-base inline-block mb-2 text-[#adadad] hover:underline hover:text-black`,
 };
