@@ -47,7 +47,7 @@ const Navbar = () => {
               className="peer hidden"
             />
             <label htmlFor="hamburger" className={styles.hambager}>
-              <i className="text-xl text-orange-500">
+              <i className="text-xl text-primary">
                 <RiBarChartHorizontalFill />
               </i>
             </label>

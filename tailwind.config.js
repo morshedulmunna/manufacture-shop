@@ -3,5 +3,18 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        doctortheme: {
+          primary: "#F8D007",
+          secondary: "#EFA600",
+          accent: "#222222",
+          neutral: "#232323",
+        },
+      },
+      "light",
+    ],
+  },
 };
