@@ -52,8 +52,8 @@ const ProductDetails = () => {
                 Available Stock {Stock} unit
               </div>
             </div>
-            <div className="badge badge-primary py-4 font-bold my-3">
-              Product Price ${price}
+            <div className="py-4 font-bold my-3 text-primary text-lg">
+              Product Price ${price}/unit
             </div>
             <div className="form-control">
               <label className="label">

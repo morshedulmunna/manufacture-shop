@@ -66,6 +66,13 @@ const Navbar = () => {
                       </Link>
                     </li>
                   ))}
+                  {user && (
+                    <li>
+                      <Link to="dashboard" className={styles.link}>
+                        <span className={styles.menu}> Dashboard</span>
+                      </Link>
+                    </li>
+                  )}
                 </ul>
 
                 <div className={styles.loginArea}>

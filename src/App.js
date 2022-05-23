@@ -3,7 +3,14 @@ import RequireAuth from "./helper/RequireAuth";
 import { Toaster } from "react-hot-toast";
 import { Routes, Route } from "react-router-dom";
 import { Footer, Navbar } from "./shared/index";
-import { Home, Login, Purchase, ProductDetails, Signup } from "./pages/index";
+import {
+  Home,
+  Login,
+  Purchase,
+  ProductDetails,
+  Signup,
+  Dashboard,
+} from "./pages/index";
 function App() {
   return (
     <>
@@ -25,6 +32,14 @@ function App() {
           element={
             <RequireAuth>
               <Purchase />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
             </RequireAuth>
           }
         />

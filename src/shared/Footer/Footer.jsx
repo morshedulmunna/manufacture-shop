@@ -112,7 +112,7 @@ const Footer = () => {
           </div>
 
           <div className="text-center">
-            <p className="text-sm py-2">
+            <p className="text-[12px] py-5">
               Copyright © 2022 - All right reserved by Alliance Inc Ltd
               @develop-by-morshedulmunna
             </p>

@@ -17,8 +17,8 @@ const Tools = ({ product }) => {
         <div className=" p-2 text-black ">
           <h2 className="card-title">{title.slice(1, 40)}</h2>
 
-          <div className="badge badge-lg font-bold text-primary">
-            Price: $<span> {price} </span>
+          <div className="font-bold text-primary">
+            Price: $<span>{price} </span>
           </div>
 
           <div className="flex justify-between items-center flex-col lg:flex-row md:flex-row my-5">
