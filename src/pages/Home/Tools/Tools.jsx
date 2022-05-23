@@ -15,7 +15,7 @@ const Tools = ({ product }) => {
           <img className="w-[70%]" src={img} alt="Shoes" />
         </figure>
         <div className=" p-2 text-black ">
-          <h2 className="card-title">{title.slice(1, 40)}</h2>
+          <h2 className="card-title">{title.slice(0, 45)}...</h2>
 
           <div className="font-bold text-primary">
             Price: $<span>{price} </span>
@@ -29,7 +29,7 @@ const Tools = ({ product }) => {
               Min Order {minOrder} unit
             </div>
           </div>
-          <p> {description.slice(1, 120)} </p>
+          <p> {description.slice(0, 120)}..... </p>
 
           <div className="card-actions justify-end ">
             <Link className="w-full" to={`/details/${_id}`}>

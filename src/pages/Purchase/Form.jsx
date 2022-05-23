@@ -1,4 +1,5 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import {
   ssl,
   notion,
@@ -8,9 +9,19 @@ import {
   amex,
 } from "../../assets/index";
 const Form = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
           placeholder="Email Address"
@@ -21,33 +32,93 @@ const Form = () => {
           placeholder="Full Name"
           class="input input-bordered w-full mb-5 "
         />
+        <label className="label">
+          {errors.address?.type === "required" && (
+            <span className="label-text-alt text-red-500">
+              {errors.address.message}
+            </span>
+          )}
+          {errors.apt?.type === "required" && (
+            <span className="label-text-alt text-red-500">
+              {errors.apt.message}
+            </span>
+          )}
+        </label>
         <div className="flex items-center justify-between">
           <input
             type="text"
             placeholder="Address"
             class="input input-bordered w-[78%] mb-5 "
+            {...register("address", {
+              required: {
+                value: true,
+                message: "Address is Required",
+              },
+            })}
           />
+
           <input
             type="text"
             placeholder="Apt/Suite"
             class="input input-bordered w-[20%] mb-5 "
+            {...register("apt", {
+              required: {
+                value: true,
+                message: "Apt/Suite is Required",
+              },
+            })}
           />
         </div>
+
         <input
           type="text"
           placeholder="City"
           class="input input-bordered w-full mb-5 "
         />
+        <label className="label">
+          {errors.State?.type === "required" && (
+            <span className="label-text-alt text-red-500">
+              {errors.State.message}
+            </span>
+          )}
+          {errors.ZipCode?.type === "required" && (
+            <span className="label-text-alt text-red-500">
+              {errors.ZipCode.message}
+            </span>
+          )}
+          {errors.ZipCode?.type === "pattern" && (
+            <span className="label-text-alt text-red-500">
+              {errors.ZipCode.message}
+            </span>
+          )}
+        </label>
         <div className="flex items-center justify-between">
           <input
             type="text"
             placeholder="State"
             class="input input-bordered w-[78%] mb-5 "
+            {...register("State", {
+              required: {
+                value: true,
+                message: "State is Required",
+              },
+            })}
           />
+
           <input
             type="text"
             placeholder="Zip-Code"
             class="input input-bordered w-[20%] mb-5 "
+            {...register("ZipCode", {
+              required: {
+                value: true,
+                message: "Zip-Code is Required",
+              },
+              pattern: {
+                value: /^[0-9]*$/,
+                message: "Provide a valid Number",
+              },
+            })}
           />
         </div>
 
