@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { GlobalCSS, useTitle } from "../../helper";
 import CompanyProfile from "./CompanyProfile/CompanyProfile";
 import Banner from "./HomeShared/Banner";
 import Tools from "./Tools/Tools";
-import axios from "axios";
 import {
   MdProductionQuantityLimits,
   MdAccessibilityNew,
   MdDry,
   MdReviews,
 } from "react-icons/md";
+import useProductsLoad from "../../Hooks/useProductLoad";
 
 const Home = () => {
   useTitle("Alliance Inc");
-  const [products, setProducs] = useState([]);
-
-  console.log(products);
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/products").then((res) => {
-      setProducs(res.data);
-    });
-  }, []);
+  const [products] = useProductsLoad();
 
   return (
     <div>

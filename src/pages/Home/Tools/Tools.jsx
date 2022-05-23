@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 
 const Tools = ({ product }) => {
-  console.log(product);
-  const { img, price, minOrder, Stock, title, description } = product;
+  const { img, price, minOrder, Stock, title, description, _id } = product;
 
   const stock = parseInt(Stock);
 
@@ -35,7 +34,7 @@ const Tools = ({ product }) => {
           <p> {description.slice(1, 120)} </p>
 
           <div className="card-actions justify-end ">
-            <Link className="w-full" to="/purchase">
+            <Link className="w-full" to={`/purchase/${_id}`}>
               <button className="btn btn-primary gap-2 w-full my-5 ">
                 Order Now
                 <svg
