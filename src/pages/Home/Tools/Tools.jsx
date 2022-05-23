@@ -10,7 +10,7 @@ const Tools = ({ product }) => {
 
   return (
     <div className={GlobalCSS.container}>
-      <div className="card w-full bg-base-100 shadow-xl mt-5">
+      <div className="card lg:w-[80%] md:w-[80%] w-full bg-base-100 shadow-xl mt-12">
         <figure>
           <img className="w-[70%]" src={img} alt="Shoes" />
         </figure>
@@ -32,9 +32,9 @@ const Tools = ({ product }) => {
           <p> {description.slice(1, 120)} </p>
 
           <div className="card-actions justify-end ">
-            <Link className="w-full" to={`/purchase/${_id}`}>
+            <Link className="w-full" to={`/details/${_id}`}>
               <button className="btn btn-primary gap-2 w-full my-5 ">
-                Order Now
+                Place Order
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"

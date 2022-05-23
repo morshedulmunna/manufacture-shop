@@ -104,7 +104,7 @@ const styles = {
   logoWrapper:
     "flex justify-center items-center text-orange-600 cursor-pointer",
   logoicon: "text-2xl pr-1",
-  logoName: "text-xl font-bold",
+  logoName: "text-2xl font-bold",
   navWrapper: "flex items-center justify-end border-l lg:border-l-0",
   hambager:
     "peer-checked:hamburger block relative z-20 p-3 -mr-3 cursor-pointer lg:hidden",
