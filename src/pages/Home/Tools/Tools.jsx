@@ -4,33 +4,35 @@ import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 
 const Tools = ({ product }) => {
-  const { img } = product;
+  console.log(product);
+  const { img, price, minOrder, Stock, title, description } = product;
+
+  const stock = parseInt(Stock);
+
   return (
     <div className={GlobalCSS.container}>
       <div className="card w-full bg-base-100 shadow-xl mt-5">
         <figure>
-          <img className="w-full" src={img} alt="Shoes" />
+          <img className="w-[70%]" src={img} alt="Shoes" />
         </figure>
         <div className=" p-2 text-black ">
-          <h2 className="card-title">
-            Shoes! asfhafg sdfa HGello world HGello world
-          </h2>
+          <h2 className="card-title">{title.slice(1, 40)}</h2>
 
           <div className="badge badge-lg font-bold text-primary">
-            Price: $<span>3</span>
+            Price: $<span> {price} </span>
           </div>
 
           <div className="flex justify-between items-center my-5">
             <div className="badge badge-accent badge-outline">
               <span>
-                Stock <CountUp end={934567} /> unit
+                Stock <CountUp end={stock} /> unit
               </span>
             </div>
             <div className="badge badge-accent badge-outline">
-              Min Order 500 unit
+              Min Order {minOrder} unit
             </div>
           </div>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <p> {description.slice(1, 120)} </p>
 
           <div className="card-actions justify-end ">
             <Link className="w-full" to="/purchase">

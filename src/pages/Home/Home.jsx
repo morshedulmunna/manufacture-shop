@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GlobalCSS, useTitle } from "../../helper";
 import CompanyProfile from "./CompanyProfile/CompanyProfile";
 import Banner from "./HomeShared/Banner";
@@ -17,9 +17,11 @@ const Home = () => {
 
   console.log(products);
 
-  axios.get("http://localhost:5000/products").then((res) => {
-    setProducs(res.data);
-  });
+  useEffect(() => {
+    axios.get("http://localhost:5000/products").then((res) => {
+      setProducs(res.data);
+    });
+  }, []);
 
   return (
     <div>
