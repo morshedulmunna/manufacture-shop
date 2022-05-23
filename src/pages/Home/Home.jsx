@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { GlobalCSS, useTitle } from "../../helper";
 import CompanyProfile from "./CompanyProfile/CompanyProfile";
 import Banner from "./HomeShared/Banner";
 import Tools from "./Tools/Tools";
+import axios from "axios";
 import {
   MdProductionQuantityLimits,
   MdAccessibilityNew,
@@ -12,41 +13,13 @@ import {
 
 const Home = () => {
   useTitle("Alliance Inc");
+  const [products, setProducs] = useState([]);
 
-  const companyProfile = [
-    {
-      id: 1,
-      title: "Total Product",
-      count: 50,
-      prifex: "k",
-      dis: "In the Inventory",
-      icons: <MdProductionQuantityLimits />,
-    },
-    {
-      id: 2,
-      title: "Happy Client",
-      count: 120,
-      prifex: "k",
-      dis: "All Over The World",
-      icons: <MdAccessibilityNew />,
-    },
-    {
-      id: 3,
-      title: "Our Partner",
-      count: 60,
-      prifex: "K",
-      dis: "Work With Us",
-      icons: <MdDry />,
-    },
-    {
-      id: 4,
-      title: "Reviews",
-      count: 6,
-      prifex: "K",
-      dis: "From Customer",
-      icons: <MdReviews />,
-    },
-  ];
+  console.log(products);
+
+  axios.get("http://localhost:5000/products").then((res) => {
+    setProducs(res.data);
+  });
 
   return (
     <div>
@@ -61,12 +34,9 @@ const Home = () => {
           Selected Trending Products
         </h1>
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-col-1 md:p-0 place-items-center">
-          <Tools />
-          <Tools />
-          <Tools />
-          <Tools />
-          <Tools />
-          <Tools />
+          {products.map((product) => (
+            <Tools key={product._id} product={product} />
+          ))}
         </div>
       </div>
     </div>
@@ -74,3 +44,38 @@ const Home = () => {
 };
 
 export default Home;
+
+const companyProfile = [
+  {
+    id: 1,
+    title: "Total Product",
+    count: 50,
+    prifex: "k",
+    dis: "In the Inventory",
+    icons: <MdProductionQuantityLimits />,
+  },
+  {
+    id: 2,
+    title: "Happy Client",
+    count: 120,
+    prifex: "k",
+    dis: "All Over The World",
+    icons: <MdAccessibilityNew />,
+  },
+  {
+    id: 3,
+    title: "Our Partner",
+    count: 60,
+    prifex: "K",
+    dis: "Work With Us",
+    icons: <MdDry />,
+  },
+  {
+    id: 4,
+    title: "Reviews",
+    count: 6,
+    prifex: "K",
+    dis: "From Customer",
+    icons: <MdReviews />,
+  },
+];

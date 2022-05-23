@@ -3,16 +3,13 @@ import { GlobalCSS } from "../../../helper/index";
 import { Link } from "react-router-dom";
 import CountUp from "react-countup";
 
-const Tools = () => {
+const Tools = ({ product }) => {
+  const { img } = product;
   return (
     <div className={GlobalCSS.container}>
       <div className="card w-full bg-base-100 shadow-xl mt-5">
         <figure>
-          <img
-            className="w-full"
-            src="https://api.lorem.space/image/shoes?w=400&h=225"
-            alt="Shoes"
-          />
+          <img className="w-full" src={img} alt="Shoes" />
         </figure>
         <div className=" p-2 text-black ">
           <h2 className="card-title">

@@ -11,7 +11,7 @@ import { signOut } from "firebase/auth";
 const Navbar = () => {
   const [user] = useAuthState(auth);
 
-  console.log(user);
+  // console.log(user);
   const navManu = [
     {
       id: 1,
