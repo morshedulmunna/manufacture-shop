@@ -21,11 +21,9 @@ const Tools = ({ product }) => {
             Price: $<span> {price} </span>
           </div>
 
-          <div className="flex justify-between items-center my-5">
-            <div className="badge badge-accent badge-outline">
-              <span>
-                Stock <CountUp end={stock} /> unit
-              </span>
+          <div className="flex justify-between items-center flex-col lg:flex-row md:flex-row my-5">
+            <div className="badge badge-accent badge-outline mb-2 lg:mb-0 md:mb-0">
+              Stock <CountUp end={stock} /> unit
             </div>
             <div className="badge badge-accent badge-outline">
               Min Order {minOrder} unit
