@@ -1,7 +1,6 @@
 import React from "react";
 import { GlobalCSS } from "../../../helper/index";
 import { Link } from "react-router-dom";
-import CountUp from "react-countup";
 
 const Tools = ({ product }) => {
   const { img, price, minOrder, Stock, title, description, _id } = product;
@@ -32,7 +31,7 @@ const Tools = ({ product }) => {
           <p> {description.slice(0, 120)}..... </p>
 
           <div className="card-actions justify-end ">
-            <Link className="w-full" to={`/details/${_id}`}>
+            <Link className="w-full" to={`/place-order/${_id}`}>
               <button className="btn btn-primary gap-2 w-full my-5 ">
                 Place Order
                 <svg

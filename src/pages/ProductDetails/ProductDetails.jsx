@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebaseInit";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const [signleProduct, setSingleProduct] = useState([]);
-
-  const navigate = useNavigate();
+  const [user] = useAuthState(auth);
 
   const {
     img,
@@ -35,9 +36,33 @@ const ProductDetails = () => {
 
   //Order Value
   const onSubmit = (data) => {
-    if (data) {
-      return toast.success("Order Placed Check Dashboard");
-    }
+    const { State, ZipCode, address, apt, ordered } = data;
+
+    const addedOrder = {
+      State,
+      ZipCode,
+      address,
+      apt,
+      ordered,
+    };
+
+    axios
+      .post("/order", addedOrder, {
+        // headers: {
+        //   authorization: `${user?.email} ${localStorage.getItem(
+        //     "accessToken"
+        //   )}`,
+        // },
+      })
+      .then(
+        (response) => {
+          toast.success("Successfully Added Your Product!!");
+        },
+        (error) => {
+          toast.error("Server Error" + error);
+        }
+      );
+    // Place Order Done
   };
 
   // Get Data From API
@@ -202,14 +227,14 @@ const ProductDetails = () => {
               errors.ordered_quantity?.type === "required" ? (
                 <input
                   type="submit"
-                  value="Purchase Now"
+                  value="Place Order"
                   disabled
                   className={`btn btn-primary mt-5 `}
                 />
               ) : (
                 <input
                   type="submit"
-                  value="Purchase Now"
+                  value="Place Order"
                   className={`btn btn-primary mt-5`}
                 />
               )}

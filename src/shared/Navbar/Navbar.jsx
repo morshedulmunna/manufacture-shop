@@ -11,6 +11,11 @@ import { signOut } from "firebase/auth";
 const Navbar = () => {
   const [user] = useAuthState(auth);
 
+  const handleLogin = () => {
+    localStorage.removeItem("accessToken");
+    signOut(auth);
+  };
+
   // console.log(user);
   const navManu = [
     {
@@ -78,10 +83,7 @@ const Navbar = () => {
                 <div className={styles.loginArea}>
                   {user ? (
                     <Link
-                      onClick={() => {
-                        signOut(auth);
-                        localStorage.removeItem("accessToken");
-                      }}
+                      onClick={handleLogin}
                       to="login"
                       className={styles.loginBTN}
                     >

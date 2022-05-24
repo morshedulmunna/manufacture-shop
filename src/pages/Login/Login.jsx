@@ -4,16 +4,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GrGoogle } from "react-icons/gr";
 import { useForm } from "react-hook-form";
 import {
+  useAuthState,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebaseInit";
 import Loader from "../../helper/Loader";
+import { useEffect } from "react";
 
 const Login = () => {
   // const [email, setEmail] = useState("");
+  const [user] = useAuthState(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, cuser, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
   const {
@@ -25,11 +28,40 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  if (user || gUser) {
+  if (cuser || gUser) {
     navigate(from, { replace: true });
     toast.success("Sign In Successfull");
   }
 
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(data.email, data.password);
+  };
+
+  // successfull login with Token
+  useEffect(() => {
+    if (user || gUser) {
+      const url = `http://localhost:5000/login`;
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          email: user?.email,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const token = data.token;
+          localStorage.setItem("accessToken", token);
+          toast.success("Login Successfull!");
+          navigate(from, { replace: true });
+        });
+    }
+  }, [from, gUser, navigate, user]);
+
+  // Loader
   if (loading || gLoading) {
     return <Loader />;
   }
@@ -43,9 +75,6 @@ const Login = () => {
     );
   }
 
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
-  };
   return (
     <>
       <section className="bg-[#F4F7FF] ">
