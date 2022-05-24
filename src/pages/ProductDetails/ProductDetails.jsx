@@ -11,7 +11,6 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [signleProduct, setSingleProduct] = useState([]);
   const [user] = useAuthState(auth);
-  console.log(user);
 
   const {
     img,
@@ -39,6 +38,8 @@ const ProductDetails = () => {
     const { State, ZipCode, address, apt, ordered } = data;
 
     const addedOrder = {
+      price,
+      OrderID: _id,
       State,
       ZipCode,
       address,
