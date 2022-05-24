@@ -2,10 +2,21 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase/firebaseInit";
 import UpdateForm from "./UpdateForm";
+import { useQuery } from "react-query";
+import Loader from "../../../helper/Loader";
 
 const MyProfile = () => {
   const [showForm, setShowForm] = useState(false);
   const [user] = useAuthState(auth);
+
+  const { isLoading, data } = useQuery("userUpdate", () =>
+    fetch("http://localhost:5000/users").then((res) => res.json())
+  );
+  console.log(data);
+
+  if (isLoading) {
+    return <Loader />;
+  }
   return (
     <div className="lg:ml-28 ml-0 flex gap-12 justify-between flex-col lg:flex-row md:flex-row h-full">
       <div className="flex gap-5 w-full lg:w-1/2 md:w-full flex-col">

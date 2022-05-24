@@ -1,6 +1,8 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import auth from "../../../firebase/firebaseInit";
 import Loader from "../../../helper/Loader";
 
@@ -16,6 +18,36 @@ const UpdateForm = ({ setShowForm }) => {
   const onSubmit = async (data) => {
     await updateProfile({ displayName: data.name });
     setShowForm(false);
+
+    console.log(data);
+    const user = {
+      address: data.address,
+      education: data.education,
+      email: data.email,
+      linkedin: data.linedin,
+      number: data.number,
+    };
+
+    // Post For Product Item ===>>>
+    const url = `http://localhost:5000/users`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data2) => {
+        if (data2.message === "Forbidden access") {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          return toast.error("Access Forbidden");
+        }
+        reset();
+        toast.success("Successfuly Added Your Userinfo");
+      });
   };
 
   if (updating) {
