@@ -25,12 +25,12 @@ const Form = () => {
         <input
           type="text"
           placeholder="Email Address"
-          class="input input-bordered w-full mb-5 "
+          className="input input-bordered w-full mb-5 "
         />
         <input
           type="text"
           placeholder="Full Name"
-          class="input input-bordered w-full mb-5 "
+          className="input input-bordered w-full mb-5 "
         />
         <label className="label">
           {errors.address?.type === "required" && (
@@ -48,7 +48,7 @@ const Form = () => {
           <input
             type="text"
             placeholder="Address"
-            class="input input-bordered w-[78%] mb-5 "
+            className="input input-bordered w-[78%] mb-5 "
             {...register("address", {
               required: {
                 value: true,
@@ -60,7 +60,7 @@ const Form = () => {
           <input
             type="text"
             placeholder="Apt/Suite"
-            class="input input-bordered w-[20%] mb-5 "
+            className="input input-bordered w-[20%] mb-5 "
             {...register("apt", {
               required: {
                 value: true,
@@ -70,11 +70,6 @@ const Form = () => {
           />
         </div>
 
-        <input
-          type="text"
-          placeholder="City"
-          class="input input-bordered w-full mb-5 "
-        />
         <label className="label">
           {errors.State?.type === "required" && (
             <span className="label-text-alt text-red-500">
@@ -96,7 +91,7 @@ const Form = () => {
           <input
             type="text"
             placeholder="State"
-            class="input input-bordered w-[78%] mb-5 "
+            className="input input-bordered w-[78%] mb-5 "
             {...register("State", {
               required: {
                 value: true,
@@ -108,7 +103,7 @@ const Form = () => {
           <input
             type="text"
             placeholder="Zip-Code"
-            class="input input-bordered w-[20%] mb-5 "
+            className="input input-bordered w-[20%] mb-5 "
             {...register("ZipCode", {
               required: {
                 value: true,
@@ -135,10 +130,10 @@ const Form = () => {
 
           {/* payment */}
           <div
-            tabindex="0"
-            class=" border border-base-300 bg-base-100 rounded-box"
+            tabIndex="0"
+            className=" border border-base-300 bg-base-100 rounded-box"
           >
-            <div class="collapse-title font-medium">
+            <div className="collapse-title font-medium">
               <div className="flex justify-between items-center">
                 <p className="w-1/2">Card Info</p>
                 <div className="flex justify-between items-center ">
@@ -153,18 +148,18 @@ const Form = () => {
               <input
                 type="text"
                 placeholder="Debit or Credit Card Number"
-                class="input input-bordered w-full mb-5 "
+                className="input input-bordered w-full mb-5 "
               />
               <div className="flex items-center justify-between">
                 <input
                   type="text"
                   placeholder="MM/YY*"
-                  class="input input-bordered w-[50%] mb-5 mr-2 "
+                  className="input input-bordered w-[50%] mb-5 mr-2 "
                 />
                 <input
                   type="text"
                   placeholder="CVV*"
-                  class="input input-bordered w-[50%] mb-5 ml-2 "
+                  className="input input-bordered w-[50%] mb-5 ml-2 "
                 />
               </div>
             </div>
@@ -174,7 +169,7 @@ const Form = () => {
         <input
           type="submit"
           value="Order Submit"
-          class="btn btn-primary font-bold  w-full my-8 "
+          className="btn btn-primary font-bold  w-full my-8 "
         />
       </form>
     </>

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const ProductDetails = () => {
   const { id } = useParams();
-
   const [signleProduct, setSingleProduct] = useState([]);
+
+  const navigate = useNavigate();
 
   const {
     img,
@@ -22,6 +25,21 @@ const ProductDetails = () => {
     _id,
   } = signleProduct;
 
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+
+  // Order Input{}
+
+  //Order Value
+  const onSubmit = (data) => {
+    if (data) {
+      return toast.success("Order Placed Check Dashboard");
+    }
+  };
+
   // Get Data From API
   useEffect(() => {
     const url = `http://localhost:5000/products/${id}`;
@@ -37,7 +55,7 @@ const ProductDetails = () => {
 
   return (
     <>
-      <div className="hero bg-base-200">
+      <div className="hero">
         <div className="hero-content flex-col lg:flex-row">
           <img className="lg:w-[40%] w-full p-5" src={img} alt="item" />
           <div>
@@ -55,22 +73,147 @@ const ProductDetails = () => {
             <div className="py-4 font-bold my-3 text-primary text-lg">
               Product Price ${price}/unit
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Select Order Quantity</span>
-              </label>
-              <label className="input-group">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-control">
+                <label className="label">
+                  {errors.address?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.address.message}
+                    </span>
+                  )}
+                  {errors.apt?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.apt.message}
+                    </span>
+                  )}
+                </label>
+                <div className="flex items-center justify-between">
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    className="input input-bordered w-[78%] mb-5 "
+                    {...register("address", {
+                      required: {
+                        value: true,
+                        message: "Address is Required",
+                      },
+                    })}
+                  />
+
+                  <input
+                    type="text"
+                    placeholder="Apt/Suite"
+                    className="input input-bordered w-[20%] mb-5 "
+                    {...register("apt", {
+                      required: {
+                        value: true,
+                        message: "Apt/Suite is Required",
+                      },
+                    })}
+                  />
+                </div>
+
+                <label className="label">
+                  {errors.State?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.State.message}
+                    </span>
+                  )}
+                  {errors.ZipCode?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.ZipCode.message}
+                    </span>
+                  )}
+                  {errors.ZipCode?.type === "pattern" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.ZipCode.message}
+                    </span>
+                  )}
+                </label>
+                <div className="flex items-center justify-between">
+                  <input
+                    type="text"
+                    placeholder="State"
+                    className="input input-bordered w-[78%] mb-5 "
+                    {...register("State", {
+                      required: {
+                        value: true,
+                        message: "State is Required",
+                      },
+                    })}
+                  />
+
+                  <input
+                    type="text"
+                    placeholder="Zip-Code"
+                    className="input input-bordered w-[20%] mb-5 "
+                    {...register("ZipCode", {
+                      required: {
+                        value: true,
+                        message: "Zip-Code is Required",
+                      },
+                      pattern: {
+                        value: /^[0-9]*$/,
+                        message: "Provide a valid Number",
+                      },
+                    })}
+                  />
+                </div>
+                <label className="label">
+                  <span className="label-text">Select Order Quantity</span>
+                </label>
+                <label className="input-group">
+                  <div className="form-control">
+                    <input
+                      {...register("ordered", {
+                        max: {
+                          value: Stock,
+                        },
+                        min: {
+                          value: minOrder,
+                        },
+                        required: true,
+                      })}
+                      type="number"
+                      defaultValue="50"
+                      name="ordered_quantity"
+                      placeholder="Please Enter your quantity"
+                      className="input input-bordered"
+                    />
+                    {errors.ordered_quantity?.type === "max" && (
+                      <span className="text-error">
+                        Please Order less than {Stock}
+                      </span>
+                    )}
+                    {errors.ordered_quantity?.type === "min" && (
+                      <span className="text-error">
+                        Please Order more than {minOrder}
+                      </span>
+                    )}
+                    {errors.ordered_quantity?.type === "required" && (
+                      <span className="text-error">Order Amount Require</span>
+                    )}
+                  </div>
+                </label>
+              </div>
+
+              {errors.ordered_quantity?.type === "max" ||
+              errors.ordered_quantity?.type === "min" ||
+              errors.ordered_quantity?.type === "required" ? (
                 <input
-                  type="number"
-                  defaultValue={minOrder}
-                  className=" py-2 w-[100px] mr-1 border-solid border-[1px] border-gray-300 pl-2 "
+                  type="submit"
+                  value="Purchase Now"
+                  disabled
+                  className={`btn btn-primary mt-5 `}
                 />
-                <span>Unit</span>
-              </label>
-            </div>
-            <Link to={`/details/${_id}/purchase`}>
-              <button className="btn btn-primary mt-5">Purchase Now</button>
-            </Link>
+              ) : (
+                <input
+                  type="submit"
+                  value="Purchase Now"
+                  className={`btn btn-primary mt-5`}
+                />
+              )}
+            </form>
           </div>
         </div>
       </div>
