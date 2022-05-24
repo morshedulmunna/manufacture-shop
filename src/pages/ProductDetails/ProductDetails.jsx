@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebaseInit";
+import { signOut } from "firebase/auth";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -32,8 +33,6 @@ const ProductDetails = () => {
     handleSubmit,
   } = useForm();
 
-  // Order Input{}
-
   //Order Value
   const onSubmit = (data) => {
     const { State, ZipCode, address, apt, ordered } = data;
@@ -44,25 +43,28 @@ const ProductDetails = () => {
       address,
       apt,
       ordered,
+      OrderID: _id,
     };
-
-    axios
-      .post("/order", addedOrder, {
-        // headers: {
-        //   authorization: `${user?.email} ${localStorage.getItem(
-        //     "accessToken"
-        //   )}`,
-        // },
-      })
-      .then(
-        (response) => {
-          toast.success("Successfully Added Your Product!!");
-        },
-        (error) => {
-          toast.error("Server Error" + error);
+    // Post For Product Item ===>>>
+    const url = `http://localhost:5000/orders`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(addedOrder),
+      headers: {
+        authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "Forbidden access") {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          return toast.error("Access Forbidden");
         }
-      );
-    // Place Order Done
+        //  e.target.reset();
+        toast.success("Successfully Added Your Product!!");
+      });
   };
 
   // Get Data From API

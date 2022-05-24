@@ -84,7 +84,7 @@ const Navbar = () => {
                   {user ? (
                     <Link
                       onClick={handleLogin}
-                      to="login"
+                      to="/"
                       className={styles.loginBTN}
                     >
                       Sign out
