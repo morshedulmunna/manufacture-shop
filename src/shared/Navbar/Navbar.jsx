@@ -12,8 +12,8 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
 
   const handleLogin = () => {
-    localStorage.removeItem("accessToken");
     signOut(auth);
+    localStorage.removeItem("accessToken");
   };
 
   // console.log(user);
@@ -39,6 +39,11 @@ const Navbar = () => {
     <>
       <header className={`${styles.header} ${GlobalCSS.container}`}>
         <div className={styles.nav}>
+          <label htmlFor="dashboard-sidebar" className={styles.hambager}>
+            <i className="text-xl text-orange-700 ">
+              <RiBarChartHorizontalFill />
+            </i>
+          </label>
           <Link to="/">
             <div className={styles.logoWrapper}>
               <i className={styles.logoicon}>

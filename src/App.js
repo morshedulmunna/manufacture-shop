@@ -11,6 +11,7 @@ import {
   Signup,
   Dashboard,
 } from "./pages/index";
+import { MyOrder, MyProfile, MyReview } from "./pages/Dashboard";
 function App() {
   return (
     <>
@@ -43,6 +44,18 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<MyProfile />} />
+          <Route path="review" element={<MyReview />} />
+          <Route path="order" element={<MyOrder />} />
+        </Route>
       </Routes>
       <Footer />
       <Toaster position="top-right" reverseOrder={false} />

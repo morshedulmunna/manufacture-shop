@@ -11,6 +11,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [signleProduct, setSingleProduct] = useState([]);
   const [user] = useAuthState(auth);
+  console.log(user);
 
   const {
     img,
@@ -43,7 +44,7 @@ const ProductDetails = () => {
       address,
       apt,
       ordered,
-      OrderID: _id,
+      email: user.email,
     };
     // Post For Product Item ===>>>
     const url = `http://localhost:5000/orders`;
@@ -83,8 +84,8 @@ const ProductDetails = () => {
   return (
     <>
       <div className="hero">
-        <div className="hero-content flex-col lg:flex-row">
-          <img className="lg:w-[40%] w-full p-5" src={img} alt="item" />
+        <div className="hero-content flex-col lg:flex-row mt-12">
+          <img className="lg:w-[40%] w-full lg:mr-28" src={img} alt="item" />
           <div>
             <h1 className="text-2xl font-bold"> {title?.slice(1, 70)}... </h1>
             <p className="py-6">{description}</p>
@@ -102,6 +103,23 @@ const ProductDetails = () => {
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
+                <div className="flex items-center justify-between flex-col lg:flex-row md:flex-row">
+                  <input
+                    type="text"
+                    value={user.displayName}
+                    readOnly
+                    placeholder="Full Name"
+                    className="input input-bordered w-full mb-5 mr-2 "
+                  />
+                  <input
+                    type="text"
+                    value={user.email}
+                    placeholder="Email Address"
+                    readOnly
+                    className="input input-bordered w-full mb-5 "
+                  />
+                </div>
+
                 <label className="label">
                   {errors.address?.type === "required" && (
                     <span className="label-text-alt text-red-500">
@@ -203,30 +221,29 @@ const ProductDetails = () => {
                       })}
                       type="number"
                       defaultValue="50"
-                      name="ordered_quantity"
                       placeholder="Please Enter your quantity"
                       className="input input-bordered"
                     />
-                    {errors.ordered_quantity?.type === "max" && (
+                    {errors.ordered?.type === "max" && (
                       <span className="text-error">
                         Please Order less than {Stock}
                       </span>
                     )}
-                    {errors.ordered_quantity?.type === "min" && (
+                    {errors.ordered?.type === "min" && (
                       <span className="text-error">
                         Please Order more than {minOrder}
                       </span>
                     )}
-                    {errors.ordered_quantity?.type === "required" && (
+                    {errors.ordered?.type === "required" && (
                       <span className="text-error">Order Amount Require</span>
                     )}
                   </div>
                 </label>
               </div>
 
-              {errors.ordered_quantity?.type === "max" ||
-              errors.ordered_quantity?.type === "min" ||
-              errors.ordered_quantity?.type === "required" ? (
+              {errors.ordered?.type === "max" ||
+              errors.ordered?.type === "min" ||
+              errors.ordered?.type === "required" ? (
                 <input
                   type="submit"
                   value="Place Order"

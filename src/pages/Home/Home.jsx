@@ -10,6 +10,8 @@ import {
   MdReviews,
 } from "react-icons/md";
 import useProductsLoad from "../../Hooks/useProductLoad";
+import Review from "./Review/Review";
+import ImportingHelp from "./ImportingHelp/ImportingHelp";
 
 const Home = () => {
   useTitle("Alliance Inc");
@@ -32,6 +34,8 @@ const Home = () => {
             <Tools key={product._id} product={product} />
           ))}
         </div>
+        <ImportingHelp />
+        <Review />
       </div>
     </div>
   );

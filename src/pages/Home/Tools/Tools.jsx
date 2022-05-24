@@ -22,10 +22,10 @@ const Tools = ({ product }) => {
 
           <div className="flex justify-between items-center flex-col lg:flex-row md:flex-row my-5">
             <div className="badge badge-accent badge-outline mb-2 lg:mb-0 md:mb-0">
-              Stock {stock} units
+              Stock {stock}
             </div>
             <div className="badge badge-accent badge-outline">
-              Min Order {minOrder} units
+              Min Order {minOrder}
             </div>
           </div>
           <p> {description.slice(0, 120)}..... </p>
