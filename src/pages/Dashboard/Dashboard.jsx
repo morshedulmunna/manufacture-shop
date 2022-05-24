@@ -7,14 +7,14 @@ import { GlobalCSS } from "../../helper";
 const Dashboard = () => {
   const [user] = useAuthState(auth);
   return (
-    <div class={`drawer drawer-mobile ${GlobalCSS.container} mt-12`}>
-      <input id="dashboard-sidebar" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content mt-6">
+    <div className={`drawer drawer-mobile ${GlobalCSS.container} mt-12`}>
+      <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content mt-6">
         <Outlet></Outlet>
       </div>
-      <div class="drawer-side">
-        <label for="dashboard-sidebar" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
+      <div className="drawer-side">
+        <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
+        <ul className="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li>
             <Link to="/dashboard">My Profile</Link>

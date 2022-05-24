@@ -11,7 +11,7 @@ const MyProfile = () => {
       <div className="flex gap-5 w-full lg:w-1/2 md:w-full flex-col">
         <div className="flex items-center flex-col justify-center ">
           <img
-            class="mask mask-hexagon w-[200px]"
+            className="mask mask-hexagon w-[200px]"
             src="https://phero-web.nyc3.cdn.digitaloceanspaces.com/website-prod-images/public/files/1643442519033.jpg"
             alt="Profile"
           />
@@ -25,14 +25,26 @@ const MyProfile = () => {
             <p className="font-bold">Email Address</p>
             <p>morshedul@gmail.com</p>
           </div>
-          <div>
+          <div className="mb-6">
             <p className="font-bold">Address</p>
             <p>South Paikpara, Bottola- Home:332/c Road#19 Mirpur dhaka 1216</p>
+          </div>
+          <div className="mb-6">
+            <p className="font-bold">Phone</p>
+            <p>2354346566</p>
+          </div>
+          <div className="mb-6">
+            <p className="font-bold">Education</p>
+            <p>sdgsd sdgdsg</p>
+          </div>
+          <div className="mb-6">
+            <p className="font-bold">LinkdIn Profile</p>
+            <a href="">LinkeDin</a>
           </div>
         </div>
         <button
           onClick={() => setShowForm(true)}
-          class="btn btn-primary w-full max-w-xs"
+          className="btn btn-primary w-full max-w-xs"
         >
           Edit Profile
         </button>

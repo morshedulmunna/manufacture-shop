@@ -31,6 +31,7 @@ const ProductDetails = () => {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   //Order Value
@@ -64,7 +65,7 @@ const ProductDetails = () => {
           localStorage.removeItem("accessToken");
           return toast.error("Access Forbidden");
         }
-        //  e.target.reset();
+        reset();
         toast.success("Successfully Added Your Product!!");
       });
   };
@@ -138,7 +139,7 @@ const ProductDetails = () => {
                     type="text"
                     placeholder="Address"
                     className="input input-bordered w-[78%] mb-5 "
-                    {...register("address", {
+                    {...register("review", {
                       required: {
                         value: true,
                         message: "Address is Required",

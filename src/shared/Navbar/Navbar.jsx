@@ -36,8 +36,8 @@ const Navbar = () => {
   ];
 
   return (
-    <>
-      <header className={`${styles.header} ${GlobalCSS.container}`}>
+    <div className="bg-white sticky top-0 z-10">
+      <header className={`${styles.header} ${GlobalCSS.container} `}>
         <div className={styles.nav}>
           <label htmlFor="dashboard-sidebar" className={styles.hambager}>
             <i className="text-xl text-orange-700 ">
@@ -105,7 +105,7 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-    </>
+    </div>
   );
 };
 

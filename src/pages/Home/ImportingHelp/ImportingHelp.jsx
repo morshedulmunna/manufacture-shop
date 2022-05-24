@@ -35,7 +35,7 @@ const ImportingHelp = () => {
               import from China
             </p>
           </div>
-          <button class="btn btn-active btn-primary w-[90%] mx-auto ml-6 capitalize ">
+          <button className="btn btn-active btn-primary w-[90%] mx-auto ml-6 capitalize ">
             Let Alliance Inc Recommend Best Tools Manufacturer For You
           </button>
         </div>

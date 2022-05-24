@@ -3,19 +3,16 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import auth from "../../../firebase/firebaseInit";
 import { useNavigate } from "react-router-dom";
+import TableBody from "./TableBody";
 
 const MyOrder = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
-  const [order, setOrder] = useState([]);
-
-  console.log(order);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     if (user) {
-      console.log(user.email);
-
       fetch(`http://localhost:5000/orders?orderUser=${user.email}`, {
         method: "GET",
         headers: {
@@ -23,26 +20,23 @@ const MyOrder = () => {
         },
       })
         .then((res) => {
-          console.log("res", res);
           if (res.status === 401 || res.status === 403) {
-            // signOut(auth);
-            // localStorage.removeItem("accessToken");
-            // navigate("/");
+            signOut(auth);
+            localStorage.removeItem("accessToken");
+            navigate("/");
             console.log("Error ");
           }
           return res.json();
         })
         .then((data) => {
-          console.log(data);
-
-          setOrder(data);
+          setOrders(data);
         });
     }
-  }, [user]);
+  }, [navigate, user]);
 
   return (
-    <div class="overflow-x-auto">
-      <table class="table w-full">
+    <div className="overflow-x-auto">
+      <table className="table w-full">
         {/* <!-- head --> */}
         <thead>
           <tr>
@@ -54,25 +48,9 @@ const MyOrder = () => {
             <th>Payment Status</th>
           </tr>
         </thead>
-        <tbody>
-          {/* <!-- row 1 --> */}
-          <tr>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-            <td>Blue</td>
-            <td>
-              <div class="badge bg-red-700 border-0 cursor-pointer font-bold">
-                Cancle
-              </div>
-            </td>
-            <td>
-              <div class="badge bg-green-700 border-0 cursor-pointer font-bold">
-                Pay Fast
-              </div>
-            </td>
-          </tr>
-        </tbody>
+        {orders.map((order) => (
+          <TableBody key={order._id} order={order} />
+        ))}
       </table>
     </div>
   );
