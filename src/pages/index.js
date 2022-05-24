@@ -4,3 +4,4 @@ export { default as Signup } from "./Signup/Signup";
 export { default as ProductDetails } from "./ProductDetails/ProductDetails";
 export { default as Purchase } from "./Purchase/Purchase";
 export { default as Dashboard } from "./Dashboard/Dashboard";
+export { default as Error404 } from "./Error404/Error404";

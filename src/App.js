@@ -10,6 +10,7 @@ import {
   ProductDetails,
   Signup,
   Dashboard,
+  Error404,
 } from "./pages/index";
 import { MyOrder, MyProfile, MyReview } from "./pages/Dashboard";
 function App() {
@@ -56,6 +57,7 @@ function App() {
           <Route path="review" element={<MyReview />} />
           <Route path="order" element={<MyOrder />} />
         </Route>
+        <Route path="/*" element={<Error404 />} />
       </Routes>
       <Footer />
       <Toaster position="top-right" reverseOrder={false} />

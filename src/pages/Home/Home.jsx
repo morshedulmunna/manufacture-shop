@@ -12,6 +12,7 @@ import {
 import useProductsLoad from "../../Hooks/useProductLoad";
 import Review from "./Review/Review";
 import ImportingHelp from "./ImportingHelp/ImportingHelp";
+import Contact from "./Contact/Contact";
 
 const Home = () => {
   useTitle("Alliance Inc");
@@ -36,6 +37,7 @@ const Home = () => {
         </div>
         <ImportingHelp />
         <Review />
+        <Contact />
       </div>
     </div>
   );
