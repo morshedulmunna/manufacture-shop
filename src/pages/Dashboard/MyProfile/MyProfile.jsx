@@ -16,12 +16,15 @@ const MyProfile = () => {
   // console.log(user.email);
 
   const { isLoading, data, refetch } = useQuery("repoData", () =>
-    fetch(`http://localhost:5000/users/one?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://fierce-mountain-71205.herokuapp.com/users/one?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");

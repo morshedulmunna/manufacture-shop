@@ -25,7 +25,7 @@ const MyReview = () => {
     };
 
     // Post For Product Item ===>>>
-    const url = `http://localhost:5000/review`;
+    const url = `https://fierce-mountain-71205.herokuapp.com/review`;
     fetch(url, {
       method: "POST",
       headers: {

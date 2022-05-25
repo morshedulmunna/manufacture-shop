@@ -10,7 +10,7 @@ const ManageOrder = () => {
   const [allOrder, setAllOrder] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/allorder`, {
+    fetch(`https://fierce-mountain-71205.herokuapp.com/orders/allorder`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

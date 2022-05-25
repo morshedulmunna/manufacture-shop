@@ -39,7 +39,7 @@ const Login = () => {
   // successfull login with Token
   useEffect(() => {
     if (user || gUser) {
-      const url = `http://localhost:5000/login`;
+      const url = `https://fierce-mountain-71205.herokuapp.com/login`;
 
       fetch(url, {
         method: "POST",

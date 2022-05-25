@@ -19,7 +19,7 @@ const AddProduct = () => {
     console.log(data);
 
     // Post For Product Item ===>>>
-    const url = `http://localhost:5000/products`;
+    const url = `https://fierce-mountain-71205.herokuapp.com/products`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data),

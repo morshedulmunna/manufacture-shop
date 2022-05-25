@@ -18,7 +18,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products`, {
+    fetch(`https://fierce-mountain-71205.herokuapp.com/products`, {
       method: "GET",
     })
       .then((res) => {

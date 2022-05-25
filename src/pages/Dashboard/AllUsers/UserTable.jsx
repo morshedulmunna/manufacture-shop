@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 const UserTable = ({ user, refetch }) => {
   const { name, email, number, roll } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/users/admin/${email}`, {
+    fetch(`https://fierce-mountain-71205.herokuapp.com/users/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
