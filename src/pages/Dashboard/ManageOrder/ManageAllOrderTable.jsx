@@ -11,7 +11,7 @@ const ManageAllOrderTable = ({ OrderAll }) => {
         <td>{OrderID}</td>
         <td>{email}</td>
         <td>{ordered}</td>
-        <td>{totalPrice}</td>
+        <td>${totalPrice}</td>
         <td>
           <button className="btn badge border-0 hover:bg-pink-800 bg-pink-700 btn-xs capitalize">
             Delivery

@@ -1,5 +1,9 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import auth from "../../../firebase/firebaseInit";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const AddProduct = () => {
   const {
@@ -8,12 +12,40 @@ const AddProduct = () => {
     handleSubmit,
     reset,
   } = useForm();
+
+  const [user] = useAuthState(auth);
+
+  const onSubmit = (data) => {
+    console.log(data);
+
+    // Post For Product Item ===>>>
+    const url = `http://localhost:5000/products`;
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        authorization: `${user?.email} ${localStorage.getItem("accessToken")}`,
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === "Forbidden access") {
+          signOut(auth);
+          localStorage.removeItem("accessToken");
+          return toast.error("Access Forbidden");
+        }
+        reset();
+        toast.success("Successfully Added Your Product!!");
+      });
+  };
+
   return (
     <div>
       <div>
         <p className="text-center font-bold text-xl">Add a New Product</p>
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control  lg:w-1/2 w-full mx-auto ">
             <label className="label">
               <span className="label-text">Product Name</span>
@@ -267,9 +299,10 @@ const AddProduct = () => {
               <span className="label-text">Upload Product Image</span>
             </label>
             <input
-              type="file"
-              placeholder="Type Name"
-              {...register("name", {
+              type="text"
+              placeholder="Product URL Link"
+              className="input input-bordered w-full"
+              {...register("img", {
                 required: {
                   value: true,
                   message: "Name is Required",

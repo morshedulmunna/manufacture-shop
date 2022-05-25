@@ -1,8 +1,6 @@
 import React from "react";
 
 const ManageProductTableBody = ({ product }) => {
-  console.log(product);
-
   const { _id, Stock, minOrder, price, Size, Material, Weight, Warranty } =
     product;
   return (
