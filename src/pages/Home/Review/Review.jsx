@@ -27,7 +27,7 @@ const Review = () => {
     <>
       <Swiper
         slidesPerView={10}
-        spaceBetween={10}
+        spaceBetween={5}
         pagination={{
           clickable: true,
         }}
