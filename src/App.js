@@ -12,7 +12,7 @@ import {
   Dashboard,
   Error404,
 } from "./pages/index";
-import { MyOrder, MyProfile, MyReview } from "./pages/Dashboard";
+import { AllUsers, MyOrder, MyProfile, MyReview } from "./pages/Dashboard";
 function App() {
   return (
     <>
@@ -56,6 +56,7 @@ function App() {
           <Route index element={<MyProfile />} />
           <Route path="review" element={<MyReview />} />
           <Route path="order" element={<MyOrder />} />
+          <Route path="users" element={<AllUsers />} />
         </Route>
         <Route path="/*" element={<Error404 />} />
       </Routes>

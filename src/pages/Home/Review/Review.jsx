@@ -15,9 +15,6 @@ const Review = () => {
   const { isLoading, data } = useQuery("reviewData", () =>
     fetch(`http://localhost:5000/review`, {
       method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {
       }
@@ -61,7 +58,7 @@ const Review = () => {
         modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
-        {data.map((review) => (
+        {data?.map((review) => (
           <SwiperSlide>
             <ShowReview review={review} key={review._id} />
           </SwiperSlide>

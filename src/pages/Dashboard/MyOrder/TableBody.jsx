@@ -16,7 +16,7 @@ const TableBody = ({ order }) => {
           <td>NaN</td>
           <td>{ordered1}</td>
           <td>
-            <div className="badge bg-red-700 border-0 cursor-pointer font-bold">
+            <div className="badge bg-orange-700 border-0 cursor-pointer font-bold">
               Cancle
             </div>
           </td>

@@ -27,6 +27,7 @@ const UpdateForm = ({ setShowForm, refetch }) => {
       newEmail: data.email,
       linkedin: data.linedin,
       number: data.number,
+      name: data.name,
     };
 
     const email = user.email;

@@ -6,14 +6,17 @@ import { useQuery } from "react-query";
 import Loader from "../../../helper/Loader";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
+import { BsLinkedin } from "react-icons/bs";
 
 const MyProfile = () => {
   const [showForm, setShowForm] = useState(false);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
+  console.log(user.email);
+
   const { isLoading, data, refetch } = useQuery("repoData", () =>
-    fetch(`http://localhost:5000/users?email=${user.email}`, {
+    fetch(`http://localhost:5000/users/one?email=${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -28,6 +31,8 @@ const MyProfile = () => {
       return res.json();
     })
   );
+
+  console.log(data);
 
   if (isLoading) return <Loader></Loader>;
 
@@ -64,7 +69,17 @@ const MyProfile = () => {
           </div>
           <div className="mb-6">
             <p className="font-bold">LinkdIn Profile</p>
-            <a href={data.linkedin}>LinkeDin</a>
+            <a
+              className="font-bold text-blue-600 underline"
+              href={data.linkedin}
+            >
+              <div className="flex items-center">
+                <span className="mr-2">
+                  <BsLinkedin />
+                </span>
+                <span>likedin</span>
+              </div>
+            </a>
           </div>
         </div>
         <button
