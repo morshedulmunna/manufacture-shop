@@ -31,7 +31,7 @@ const UpdateForm = ({ setShowForm }) => {
     // Post For Product Item ===>>>
     const url = `http://localhost:5000/users`;
     fetch(url, {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

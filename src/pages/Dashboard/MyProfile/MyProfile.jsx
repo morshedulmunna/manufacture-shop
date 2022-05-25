@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase/firebaseInit";
 import UpdateForm from "./UpdateForm";
@@ -7,16 +7,34 @@ import Loader from "../../../helper/Loader";
 
 const MyProfile = () => {
   const [showForm, setShowForm] = useState(false);
+  const [updateUser, setUpdateUser] = useState([]);
   const [user] = useAuthState(auth);
 
-  const { isLoading, data } = useQuery("userUpdate", () =>
-    fetch("http://localhost:5000/users").then((res) => res.json())
-  );
-  console.log(data);
+  console.log(updateUser);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  useEffect(() => {
+    if (user) {
+      fetch(`http://localhost:5000/users?singleusers=${user.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            // signOut(auth);
+            // localStorage.removeItem("accessToken");
+            // navigate("/");
+            // console.log("Error ");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setUpdateUser(data);
+        });
+    }
+  }, [user]);
+
   return (
     <div className="lg:ml-28 ml-0 flex gap-12 justify-between flex-col lg:flex-row md:flex-row h-full">
       <div className="flex gap-5 w-full lg:w-1/2 md:w-full flex-col">
