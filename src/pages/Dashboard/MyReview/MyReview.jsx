@@ -48,7 +48,7 @@ const MyReview = () => {
 
   return (
     <div>
-      <div className="h-full">
+      <div className="h-full mx-12">
         <p className="font-bold">Add Your Review (FeedBack)</p>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-control w-full max-w-xs mb-6 ">

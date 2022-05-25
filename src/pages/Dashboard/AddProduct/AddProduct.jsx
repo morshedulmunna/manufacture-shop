@@ -11,7 +11,7 @@ const AddProduct = () => {
   return (
     <div>
       <div>
-        <p className="text-center font-bold">Add a New Product</p>
+        <p className="text-center font-bold text-xl">Add a New Product</p>
 
         <form>
           <div className="form-control  lg:w-1/2 w-full mx-auto ">
@@ -22,7 +22,7 @@ const AddProduct = () => {
               type="text"
               placeholder="Type Name"
               className="input input-bordered w-full"
-              {...register("name", {
+              {...register("title", {
                 required: {
                   value: true,
                   message: "Name is Required",
@@ -30,234 +30,241 @@ const AddProduct = () => {
               })}
             />
             <label className="label">
-              {errors.name?.type === "required" && (
+              {errors.title?.type === "required" && (
                 <span className="label-text-alt text-red-500">
-                  {errors.name.message}
+                  {errors.title.message}
                 </span>
               )}
             </label>
           </div>
+          {/*  */}
           <div className="form-control lg:w-1/2 w-full mx-auto">
             <label className="label">
-              <span className="label-text">Edit Your Address?</span>
+              <span className="label-text">Discription</span>
             </label>
             <textarea
               className="textarea textarea-bordered"
-              placeholder="Address"
-              {...register("address", {
+              placeholder="Discription"
+              {...register("description", {
                 required: {
                   value: true,
-                  message: "Address is Required",
+                  message: "Discription is Required",
                 },
               })}
             />
             <label className="label">
-              {errors.address?.type === "required" && (
+              {errors.description?.type === "required" && (
                 <span className="label-text-alt text-red-500">
-                  {errors.address.message}
+                  {errors.description.message}
                 </span>
               )}
             </label>
           </div>
+          {/*  */}
           <div className="flex lg:w-1/2 w-full mx-auto gap-5">
+            {/*  */}
             <div className="form-control  lg:w-1/2 w-full mx-auto ">
               <label className="label">
-                <span className="label-text">Product Name</span>
+                <span className="label-text">Product Material</span>
               </label>
               <input
                 type="text"
-                placeholder="Type Name"
+                placeholder="Material"
                 className="input input-bordered w-full"
-                {...register("name", {
+                {...register("Material", {
                   required: {
                     value: true,
-                    message: "Name is Required",
+                    message: "Material is Required",
                   },
                 })}
               />
               <label className="label">
-                {errors.name?.type === "required" && (
+                {errors.Material?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.name.message}
+                    {errors.Material.message}
                   </span>
                 )}
               </label>
             </div>
             <div className="form-control  lg:w-1/2 w-full mx-auto ">
               <label className="label">
-                <span className="label-text">Product Name</span>
+                <span className="label-text">Size</span>
               </label>
               <input
                 type="text"
-                placeholder="Type Name"
+                placeholder="Size"
                 className="input input-bordered w-full"
-                {...register("name", {
+                {...register("Size", {
                   required: {
                     value: true,
-                    message: "Name is Required",
+                    message: "Size is Required",
                   },
                 })}
               />
               <label className="label">
-                {errors.name?.type === "required" && (
+                {errors.Size?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.name.message}
+                    {errors.Size.message}
                   </span>
                 )}
               </label>
             </div>
-          </div>
-          <div className="flex lg:w-1/2 w-full mx-auto gap-5">
-            <div className="form-control  lg:w-1/2 w-full mx-auto ">
-              <label className="label">
-                <span className="label-text">Product Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Type Name"
-                className="input input-bordered w-full"
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "Name is Required",
-                  },
-                })}
-              />
-              <label className="label">
-                {errors.name?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.name.message}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div className="form-control  lg:w-1/2 w-full mx-auto ">
-              <label className="label">
-                <span className="label-text">Product Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Type Name"
-                className="input input-bordered w-full"
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "Name is Required",
-                  },
-                })}
-              />
-              <label className="label">
-                {errors.name?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.name.message}
-                  </span>
-                )}
-              </label>
-            </div>
+            {/*  */}
           </div>
           {/*  */}
           <div className="flex lg:w-1/2 w-full mx-auto gap-5">
             <div className="form-control  lg:w-1/2 w-full mx-auto ">
               <label className="label">
-                <span className="label-text">Product Name</span>
+                <span className="label-text">Weight</span>
               </label>
               <input
                 type="text"
-                placeholder="Type Name"
+                placeholder="Weight"
                 className="input input-bordered w-full"
-                {...register("name", {
+                {...register("Weight", {
                   required: {
                     value: true,
-                    message: "Name is Required",
+                    message: "Weight is Required",
                   },
                 })}
               />
               <label className="label">
-                {errors.name?.type === "required" && (
+                {errors.Weight?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.name.message}
+                    {errors.Weight.message}
                   </span>
                 )}
               </label>
             </div>
+            {/*  */}
             <div className="form-control  lg:w-1/2 w-full mx-auto ">
               <label className="label">
-                <span className="label-text">Product Name</span>
+                <span className="label-text">Warranty</span>
               </label>
               <input
                 type="text"
-                placeholder="Type Name"
+                placeholder="Warranty"
                 className="input input-bordered w-full"
-                {...register("name", {
+                {...register("Warranty", {
                   required: {
                     value: true,
-                    message: "Name is Required",
+                    message: "Warranty is Required",
                   },
                 })}
               />
               <label className="label">
-                {errors.name?.type === "required" && (
+                {errors.Warranty?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.name.message}
+                    {errors.Warranty.message}
                   </span>
                 )}
               </label>
             </div>
           </div>
           {/*  */}
-          {/*  */}
           <div className="flex lg:w-1/2 w-full mx-auto gap-5">
             <div className="form-control  lg:w-1/2 w-full mx-auto ">
               <label className="label">
-                <span className="label-text">Product Name</span>
+                <span className="label-text">Color </span>
               </label>
               <input
                 type="text"
-                placeholder="Type Name"
+                placeholder="Color"
                 className="input input-bordered w-full"
-                {...register("name", {
+                {...register("Color", {
                   required: {
                     value: true,
-                    message: "Name is Required",
+                    message: "Color is Required",
                   },
                 })}
               />
               <label className="label">
-                {errors.name?.type === "required" && (
+                {errors.Color?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.name.message}
+                    {errors.Color.message}
                   </span>
                 )}
               </label>
             </div>
+            {/*  */}
             <div className="form-control  lg:w-1/2 w-full mx-auto ">
               <label className="label">
-                <span className="label-text">Product Name</span>
+                <span className="label-text">Stock</span>
               </label>
               <input
                 type="text"
-                placeholder="Type Name"
+                placeholder="Stock"
                 className="input input-bordered w-full"
-                {...register("name", {
+                {...register("Stock", {
                   required: {
                     value: true,
-                    message: "Name is Required",
+                    message: "Stock is Required",
                   },
                 })}
               />
               <label className="label">
-                {errors.name?.type === "required" && (
+                {errors.Stock?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.name.message}
+                    {errors.Stock.message}
                   </span>
                 )}
               </label>
             </div>
           </div>
           {/*  */}
-          <div className="form-control  lg:w-1/2 w-full mx-auto ">
+          {/*  */}
+          <div className="flex lg:w-1/2 w-full mx-auto gap-5">
+            <div className="form-control  lg:w-1/2 w-full mx-auto ">
+              <label className="label">
+                <span className="label-text">Minmum Order</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Type Name"
+                className="input input-bordered w-full"
+                {...register("minOrder", {
+                  required: {
+                    value: true,
+                    message: "Minmum Order is Required",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.minOrder?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.minOrder.message}
+                  </span>
+                )}
+              </label>
+            </div>
+            <div className="form-control  lg:w-1/2 w-full mx-auto ">
+              <label className="label">
+                <span className="label-text">Price</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Type Name"
+                className="input input-bordered w-full"
+                {...register("price", {
+                  required: {
+                    value: true,
+                    message: "Price is Required",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.price?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.price.message}
+                  </span>
+                )}
+              </label>
+            </div>
+          </div>
+          {/*  */}
+          <div className="form-control  lg:w-1/2 w-full mx-auto px-2 ">
             <label className="label">
-              <span className="label-text">Product Name</span>
+              <span className="label-text">Upload Product Image</span>
             </label>
             <input
               type="file"
@@ -269,19 +276,12 @@ const AddProduct = () => {
                 },
               })}
             />
-            <label className="label">
-              {errors.name?.type === "required" && (
-                <span className="label-text-alt text-red-500">
-                  {errors.name.message}
-                </span>
-              )}
-            </label>
           </div>
-          <div className="form-control  lg:w-1/2 w-full mx-auto ">
+          <div className="form-control lg:w-1/2 w-full mx-auto ">
             <input
               type="submit"
               placeholder="Type New Email"
-              className="btn btn-primary mb-12 w-full mx-auto "
+              className="btn btn-primary my-8  w-full mx-auto "
             />
           </div>
         </form>
