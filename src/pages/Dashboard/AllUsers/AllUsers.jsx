@@ -20,7 +20,7 @@ const AllUsers = () => {
   if (isLoading) return <Loader></Loader>;
 
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto ">
       <table className="table w-full">
         {/* <!-- head --> */}
         <thead>

@@ -12,10 +12,13 @@ import {
   Dashboard,
   Error404,
   Portfolio,
+  About,
 } from "./pages/index";
 import {
+  AddProduct,
   AllUsers,
   ManageOrder,
+  ManageProduct,
   MyOrder,
   MyProfile,
   MyReview,
@@ -30,6 +33,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/place-order/:id"
           element={
@@ -78,6 +82,22 @@ function App() {
             element={
               <RequireAdmin>
                 <ManageOrder />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manage-product"
+            element={
+              <RequireAdmin>
+                <ManageProduct />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="add-product"
+            element={
+              <RequireAdmin>
+                <AddProduct />
               </RequireAdmin>
             }
           />

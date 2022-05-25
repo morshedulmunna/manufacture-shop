@@ -22,8 +22,6 @@ const Review = () => {
     })
   );
 
-  // console.log(data);
-
   if (isLoading) return <Loader></Loader>;
   return (
     <>
@@ -59,8 +57,8 @@ const Review = () => {
         className="mySwiper"
       >
         {data?.map((review) => (
-          <SwiperSlide>
-            <ShowReview review={review} key={review._id} />
+          <SwiperSlide key={review._id}>
+            <ShowReview review={review} />
           </SwiperSlide>
         ))}
       </Swiper>

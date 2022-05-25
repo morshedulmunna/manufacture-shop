@@ -2,6 +2,7 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase/firebaseInit";
+import Loader from "../../../helper/Loader";
 import ManageAllOrderTable from "./ManageAllOrderTable";
 
 const ManageOrder = () => {
@@ -28,8 +29,12 @@ const ManageOrder = () => {
       });
   }, [allOrder, navigate]);
 
+  if (!allOrder) {
+    return <Loader />;
+  }
+
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto mb-28">
       <table className="table w-full">
         {/* <!-- head --> */}
         <thead>

@@ -7,13 +7,13 @@ import auth from "../../../firebase/firebaseInit";
 import Loader from "../../../helper/Loader";
 
 const UpdateForm = ({ setShowForm, refetch }) => {
+  const [updateProfile, updating] = useUpdateProfile(auth);
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
-  const [updateProfile, updating] = useUpdateProfile(auth);
 
   const [user] = useAuthState(auth);
 

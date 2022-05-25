@@ -24,7 +24,7 @@ const UserTable = ({ user, refetch }) => {
   };
   return (
     <>
-      <tbody>
+      <tbody className="mb-12">
         {/* <!-- row 1 --> */}
         <tr>
           <td>{name}</td>

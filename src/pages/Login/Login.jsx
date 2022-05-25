@@ -32,7 +32,6 @@ const Login = () => {
   let from = location.state?.from?.pathname || "/";
   if (cuser || token) {
     navigate(from, { replace: true });
-    toast.success("Sign In Successfull");
   }
 
   const onSubmit = (data) => {
@@ -56,7 +55,6 @@ const Login = () => {
         .then((data) => {
           const token = data.token;
           localStorage.setItem("accessToken", token);
-          toast.success("Login Successfull!");
           navigate(from, { replace: true });
         });
     }
