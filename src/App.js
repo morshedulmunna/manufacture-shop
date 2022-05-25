@@ -6,7 +6,6 @@ import { Footer, Navbar } from "./shared/index";
 import {
   Home,
   Login,
-  Purchase,
   ProductDetails,
   Signup,
   Dashboard,
@@ -21,6 +20,7 @@ import {
   ManageProduct,
   MyOrder,
   MyProfile,
+  Payments,
   MyReview,
 } from "./pages/Dashboard";
 import RequireAdmin from "./helper/RequireAdmin";
@@ -43,14 +43,7 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route
-          path="/details/:id/purchase"
-          element={
-            <RequireAuth>
-              <Purchase />
-            </RequireAuth>
-          }
-        />
+
         <Route
           path="/dashboard"
           element={
@@ -114,6 +107,14 @@ function App() {
               <RequireAdmin>
                 <AddProduct />
               </RequireAdmin>
+            }
+          />
+          <Route
+            path="payment/:id"
+            element={
+              <RequireUser>
+                <Payments />
+              </RequireUser>
             }
           />
         </Route>

@@ -1,10 +1,35 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { GlobalCSS } from "../../helper";
+import { useQuery } from "react-query";
+import { GlobalCSS } from "../../../helper";
 import Form from "./Form";
 
-const Purchase = () => {
+const Payments = () => {
   const { id } = useParams();
+  const url = `http://localhost:5000/orders/one/${id}`;
+
+  const { data: order, isLoading } = useQuery(["order", id], () =>
+    fetch(url, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+
+  console.log(order);
+
+  if (isLoading) {
+    return "Loading.........";
+  }
+  const itemOrder = parseInt(order.ordered);
+  const eachPrice = parseInt(order.price);
+  const subTotal = itemOrder * eachPrice;
+
+  const shipping = 5;
+
+  const totalPrice = subTotal + shipping;
+
   return (
     <>
       <div className={GlobalCSS.container}>
@@ -14,28 +39,21 @@ const Purchase = () => {
               <p className="p-2 border-b-[1px] border-gray-300">
                 Order will ship as early as withen 10 Days
               </p>
-              <div className="flex items-center mt-6  ">
-                <img
-                  className="w-[20%]"
-                  src="https://sc04.alicdn.com/kf/H5790208af57a462cb39cac681e2953b2s.jpg"
-                  alt=""
-                />
-                <div className="ml-12">
-                  <h1 className="font-bold">
-                    EINENG 24VB Li-ion Battery Cordless Dri
-                  </h1>
-                </div>
+
+              <div className="ml-12 my-4">
+                <h1 className="font-bold">Order ID: {order._id}</h1>
               </div>
+
               <table className="table w-full">
                 <tbody>
                   {/* <!-- row 1 --> */}
                   <tr>
                     <td>Subtotal Price</td>
-                    <td> $54 </td>
+                    <td> ${subTotal} </td>
                   </tr>
                   <tr>
                     <td>Shipping & fees</td>
-                    <td> $5.99 </td>
+                    <td> $5</td>
                   </tr>
                   <tr className="border-b-2 border-gray-300">
                     <td>Tax</td>
@@ -43,7 +61,7 @@ const Purchase = () => {
                   </tr>
                   <tr>
                     <td className="font-bold">Total Price</td>
-                    <td className="font-bold"> $54 </td>
+                    <td className="font-bold"> ${totalPrice} </td>
                   </tr>
                 </tbody>
               </table>
@@ -54,7 +72,7 @@ const Purchase = () => {
               Purchase Details Information
             </p>
             <p className="mb-3">Shipping Information</p>
-            <Form />
+            <Form order={order} />
           </div>
         </div>
       </div>
@@ -62,4 +80,4 @@ const Purchase = () => {
   );
 };
 
-export default Purchase;
+export default Payments;
