@@ -14,7 +14,7 @@ const RequireUser = ({ children }) => {
     return <Loader />;
   }
 
-  if (user || admin) {
+  if (admin) {
     return <Navigate to="/" state={{ from: location }} replace></Navigate>;
   }
   return children;
