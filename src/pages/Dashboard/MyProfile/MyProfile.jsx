@@ -4,10 +4,13 @@ import auth from "../../../firebase/firebaseInit";
 import UpdateForm from "./UpdateForm";
 import { useQuery } from "react-query";
 import Loader from "../../../helper/Loader";
+import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
 
 const MyProfile = () => {
   const [showForm, setShowForm] = useState(false);
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const { isLoading, data, refetch } = useQuery("repoData", () =>
     fetch(`http://localhost:5000/users?email=${user.email}`, {
@@ -17,10 +20,10 @@ const MyProfile = () => {
       },
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {
-        // signOut(auth);
-        // localStorage.removeItem("accessToken");
-        // navigate("/");
-        // console.log("Error ");
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/");
+        console.log("Error ");
       }
       return res.json();
     })

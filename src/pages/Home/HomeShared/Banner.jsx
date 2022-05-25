@@ -16,9 +16,11 @@ const Banner = () => {
               We Need Help on Tools Importing from Us? Alliance Inc Recommend
               You The Best Chinese Tools Shippipment
             </p>
-            <button className="btn btn-primary">
-              Get Started Your Business With Us
-            </button>
+            <a href="#contact">
+              <button className="btn btn-primary">
+                Get Started Your Business With Us
+              </button>
+            </a>
           </div>
         </div>
       </div>

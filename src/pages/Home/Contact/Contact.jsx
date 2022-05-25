@@ -3,7 +3,7 @@ import { GlobalCSS } from "../../../helper";
 import bgImage from "../../../assets/images/contact-bg.jpg";
 const Contact = () => {
   return (
-    <div className={`${GlobalCSS.container} my-12 `}>
+    <div id="contact" className={`${GlobalCSS.container} my-12 `}>
       <div
         style={{
           background: `url(${bgImage}) `,
