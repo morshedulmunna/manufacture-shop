@@ -13,7 +13,7 @@ const MyOrder = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/orders?orderUser=${user.email}`, {
+      fetch(`http://localhost:5000/orders/userOrder?orderUser=${user.email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -24,7 +24,6 @@ const MyOrder = () => {
             signOut(auth);
             localStorage.removeItem("accessToken");
             navigate("/");
-            console.log("Error ");
           }
           return res.json();
         })

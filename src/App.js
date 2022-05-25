@@ -11,8 +11,16 @@ import {
   Signup,
   Dashboard,
   Error404,
+  Portfolio,
 } from "./pages/index";
-import { AllUsers, MyOrder, MyProfile, MyReview } from "./pages/Dashboard";
+import {
+  AllUsers,
+  ManageOrder,
+  MyOrder,
+  MyProfile,
+  MyReview,
+} from "./pages/Dashboard";
+import RequireAdmin from "./helper/RequireAdmin";
 function App() {
   return (
     <>
@@ -21,6 +29,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         <Route
           path="/place-order/:id"
           element={
@@ -56,7 +65,22 @@ function App() {
           <Route index element={<MyProfile />} />
           <Route path="review" element={<MyReview />} />
           <Route path="order" element={<MyOrder />} />
-          <Route path="users" element={<AllUsers />} />
+          <Route
+            path="users"
+            element={
+              <RequireAdmin>
+                <AllUsers />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manage-order"
+            element={
+              <RequireAdmin>
+                <ManageOrder />
+              </RequireAdmin>
+            }
+          />
         </Route>
         <Route path="/*" element={<Error404 />} />
       </Routes>

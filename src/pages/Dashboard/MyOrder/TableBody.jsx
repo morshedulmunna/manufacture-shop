@@ -16,14 +16,14 @@ const TableBody = ({ order }) => {
           <td>NaN</td>
           <td>{ordered1}</td>
           <td>
-            <div className="badge bg-orange-700 border-0 cursor-pointer font-bold">
+            <button className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize">
               Cancle
-            </div>
+            </button>
           </td>
           <td>
-            <div className="badge bg-green-700 border-0 cursor-pointer font-bold">
+            <button className="btn badge border-0 hover:bg-green-800 bg-green-700 btn-xs capitalize">
               Pay Fast
-            </div>
+            </button>
           </td>
         </tr>
       </tbody>

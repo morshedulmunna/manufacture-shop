@@ -13,7 +13,7 @@ const MyProfile = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
-  console.log(user.email);
+  // console.log(user.email);
 
   const { isLoading, data, refetch } = useQuery("repoData", () =>
     fetch(`http://localhost:5000/users/one?email=${user.email}`, {
@@ -26,13 +26,12 @@ const MyProfile = () => {
         signOut(auth);
         localStorage.removeItem("accessToken");
         navigate("/");
-        console.log("Error ");
       }
       return res.json();
     })
   );
 
-  console.log(data);
+  // console.log(data);
 
   if (isLoading) return <Loader></Loader>;
 

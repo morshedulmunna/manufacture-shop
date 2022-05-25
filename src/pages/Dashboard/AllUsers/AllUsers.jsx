@@ -4,7 +4,7 @@ import Loader from "../../../helper/Loader";
 import UserTable from "./UserTable";
 
 const AllUsers = () => {
-  const { isLoading, data } = useQuery("reviewData", () =>
+  const { isLoading, data, refetch } = useQuery("reviewData", () =>
     fetch(`http://localhost:5000/users`, {
       method: "GET",
       headers: {
@@ -17,8 +17,6 @@ const AllUsers = () => {
     })
   );
 
-  // console.log(data);
-
   if (isLoading) return <Loader></Loader>;
 
   return (
@@ -30,12 +28,12 @@ const AllUsers = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Social Link</th>
+            <th>Status</th>
             <th></th>
           </tr>
         </thead>
         {data.map((user) => (
-          <UserTable key={user._id} user={user} />
+          <UserTable refetch={refetch} key={user._id} user={user} />
         ))}
       </table>
     </div>

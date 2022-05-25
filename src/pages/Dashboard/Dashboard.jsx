@@ -3,9 +3,11 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
 import auth from "../../firebase/firebaseInit";
 import { GlobalCSS } from "../../helper";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
   return (
     <div className={`drawer drawer-mobile ${GlobalCSS.container} mt-12`}>
       <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
@@ -19,28 +21,33 @@ const Dashboard = () => {
           <li>
             <Link to="/dashboard">My Profile</Link>
           </li>
-          <li>
-            <Link to="/dashboard/order">My Order</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/review">Add Reviews</Link>
-          </li>
-          <li>
-            <Link to="/dashboard/users">All Users</Link>
-          </li>
-          {/* {admin && (
+          {!admin && (
             <>
               <li>
-                <Link to="/dashboard/users">All Users</Link>
+                <Link to="/dashboard/order">My Order</Link>
               </li>
               <li>
-                <Link to="/dashboard/addDoctor">Add a Doctor</Link>
-              </li>
-              <li>
-                <Link to="/dashboard/manageDoctor">Manage Doctors</Link>
+                <Link to="/dashboard/review">Add Reviews</Link>
               </li>
             </>
-          )} */}
+          )}
+
+          {admin && (
+            <>
+              <li>
+                <Link to="/dashboard/users">Manage Users</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/manage-order">Manage Order</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/addProduct">Add Product</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/addProduct">Manage Product</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>

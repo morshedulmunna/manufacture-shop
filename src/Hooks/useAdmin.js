@@ -7,7 +7,7 @@ const useAdmin = (user) => {
 
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/admin/${email}`, {
+      fetch(`http://localhost:5000/admin/${email}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

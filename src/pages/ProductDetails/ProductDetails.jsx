@@ -49,7 +49,7 @@ const ProductDetails = () => {
       email: user.email,
     };
     // Post For Product Item ===>>>
-    const url = `http://localhost:5000/orders`;
+    const url = `http://localhost:5000/orders/userOrder`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(addedOrder),
@@ -79,7 +79,7 @@ const ProductDetails = () => {
         setSingleProduct(response.data);
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
   }, [id]);
 

@@ -1,9 +1,27 @@
 import React from "react";
-import { BsLinkedin } from "react-icons/bs";
-
-const UserTable = ({ user }) => {
-  const { name, email, number, linkedin } = user;
-
+import toast from "react-hot-toast";
+const UserTable = ({ user, refetch }) => {
+  const { name, email, number, roll } = user;
+  const makeAdmin = () => {
+    fetch(`http://localhost:5000/users/admin/${email}`, {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 403) {
+          toast.error("Failed to Make an Admin");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("succesfully Make Admin");
+          refetch();
+        }
+      });
+  };
   return (
     <>
       <tbody>
@@ -13,19 +31,28 @@ const UserTable = ({ user }) => {
           <td>{email}</td>
           <td>{number}</td>
           <td>
-            <a className="font-bold text-blue-600 underline" href={linkedin}>
-              <div className="flex items-center">
-                <span className="mr-2">
-                  <BsLinkedin />
-                </span>
-                <span>likedin</span>
-              </div>
-            </a>
+            {roll === "admin" ? (
+              <button
+                className="btn badge border-0 hover:bg-green-800 bg-green-600 btn-xs capitalize"
+                disabled
+              >
+                Already An Admin
+              </button>
+            ) : (
+              <button
+                onClick={makeAdmin}
+                className="btn badge border-0 hover:bg-gray-800 bg-gray-600 btn-xs capitalize"
+              >
+                Make Admin
+              </button>
+            )}
           </td>
           <td>
-            <div className="badge bg-orange-700 border-0 cursor-pointer font-bold">
-              Remove User
-            </div>
+            {!(roll === "admin") && (
+              <button className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize">
+                Remove User
+              </button>
+            )}
           </td>
         </tr>
       </tbody>

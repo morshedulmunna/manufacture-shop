@@ -31,7 +31,7 @@ const UpdateForm = ({ setShowForm, refetch }) => {
     };
 
     const email = user.email;
-    console.log(email);
+    // console.log(email);
 
     if (email) {
       fetch(`http://localhost:5000/users/${email}`, {

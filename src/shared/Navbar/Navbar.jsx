@@ -16,7 +16,6 @@ const Navbar = () => {
     localStorage.removeItem("accessToken");
   };
 
-  // console.log(user);
   const navManu = [
     {
       id: 1,
@@ -30,7 +29,12 @@ const Navbar = () => {
     },
     {
       id: 3,
-      name: "blog",
+      name: "Portfolio",
+      to: "/portfolio",
+    },
+    {
+      id: 4,
+      name: "Blog",
       to: "/blog",
     },
   ];
