@@ -9,6 +9,7 @@ import {
   useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
+import useToken from "../../Hooks/useToken";
 
 const Signup = () => {
   //
@@ -16,6 +17,8 @@ const Signup = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+  const [token] = useToken(user || gUser);
 
   const {
     register,
@@ -26,7 +29,7 @@ const Signup = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  if (user || gUser) {
+  if (token) {
     navigate(from, { replace: true });
     toast.success("Sign Up Successfull");
   }

@@ -32,7 +32,7 @@ const Contact = () => {
             placeholder="Your message"
             rows={6}
           ></textarea>
-          <button class="btn btn-primary capitalize">Contact Submit</button>
+          <button className="btn btn-primary capitalize">Contact Submit</button>
         </div>
       </div>
     </div>

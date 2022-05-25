@@ -1,12 +1,12 @@
-import { signOut } from "firebase/auth";
-import React from "react";
-import { useUpdateProfile } from "react-firebase-hooks/auth";
+// import { signOut } from "firebase/auth";
+// import React, { useEffect } from "react";
+import { useAuthState, useUpdateProfile } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import auth from "../../../firebase/firebaseInit";
 import Loader from "../../../helper/Loader";
 
-const UpdateForm = ({ setShowForm }) => {
+const UpdateForm = ({ setShowForm, refetch }) => {
   const {
     register,
     formState: { errors },
@@ -15,39 +15,38 @@ const UpdateForm = ({ setShowForm }) => {
   } = useForm();
   const [updateProfile, updating] = useUpdateProfile(auth);
 
+  const [user] = useAuthState(auth);
+
   const onSubmit = async (data) => {
     await updateProfile({ displayName: data.name });
     setShowForm(false);
 
-    console.log(data);
-    const user = {
+    const newUser = {
       address: data.address,
       education: data.education,
-      email: data.email,
+      newEmail: data.email,
       linkedin: data.linedin,
       number: data.number,
     };
 
-    // Post For Product Item ===>>>
-    const url = `http://localhost:5000/users`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(user),
-    })
-      .then((response) => response.json())
-      .then((data2) => {
-        if (data2.message === "Forbidden access") {
-          signOut(auth);
-          localStorage.removeItem("accessToken");
-          return toast.error("Access Forbidden");
-        }
-        reset();
-        toast.success("Successfuly Added Your Userinfo");
-      });
+    const email = user.email;
+    console.log(email);
+
+    if (email) {
+      fetch(`http://localhost:5000/users/${email}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast.success("update Your Profile Information");
+          refetch();
+        });
+    }
+    reset();
   };
 
   if (updating) {
@@ -57,53 +56,28 @@ const UpdateForm = ({ setShowForm }) => {
     <div className="h-full">
       <p className="font-bold">Update Your Profile</p>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-4 items-center">
-          <div className="form-control w-full max-w-xs mb-6 ">
-            <label className="label">
-              <span className="label-text">Edit Your Name?</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Type Name"
-              className="input input-bordered w-full max-w-xs"
-              {...register("name", {
-                required: {
-                  value: true,
-                  message: "Name is Required",
-                },
-              })}
-            />
-            <label className="label">
-              {errors.name?.type === "required" && (
-                <span className="label-text-alt text-red-500">
-                  {errors.name.message}
-                </span>
-              )}
-            </label>
-          </div>
-          <div className="form-control w-full max-w-xs mb-6">
-            <label className="label">
-              <span className="label-text">Edit Email</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Type New Email"
-              className="input input-bordered w-full max-w-xs"
-              {...register("email", {
-                required: {
-                  value: true,
-                  message: "Email is Required",
-                },
-              })}
-            />
-            <label className="label">
-              {errors.email?.type === "required" && (
-                <span className="label-text-alt text-red-500">
-                  {errors.email.message}
-                </span>
-              )}
-            </label>
-          </div>
+        <div className="form-control w-full  mb-6 ">
+          <label className="label">
+            <span className="label-text">Edit Your Name?</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Type Name"
+            className="input input-bordered w-full"
+            {...register("name", {
+              required: {
+                value: true,
+                message: "Name is Required",
+              },
+            })}
+          />
+          <label className="label">
+            {errors.name?.type === "required" && (
+              <span className="label-text-alt text-red-500">
+                {errors.name.message}
+              </span>
+            )}
+          </label>
         </div>
 
         <div className="form-control w-full  mb-6 ">
@@ -154,7 +128,7 @@ const UpdateForm = ({ setShowForm }) => {
 
         <div className="form-control w-full  mb-6 ">
           <label className="label">
-            <span className="label-text">Edit Your Name?</span>
+            <span className="label-text">Your University/college Name</span>
           </label>
           <input
             type="text"
@@ -177,7 +151,7 @@ const UpdateForm = ({ setShowForm }) => {
         </div>
         <div className="form-control w-full mb-6 ">
           <label className="label">
-            <span className="label-text">Edit Your Name?</span>
+            <span className="label-text">LinkeDin Profile Link</span>
           </label>
           <input
             type="text"

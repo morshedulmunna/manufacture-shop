@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase/firebaseInit";
 import UpdateForm from "./UpdateForm";
@@ -7,33 +7,26 @@ import Loader from "../../../helper/Loader";
 
 const MyProfile = () => {
   const [showForm, setShowForm] = useState(false);
-  const [updateUser, setUpdateUser] = useState([]);
   const [user] = useAuthState(auth);
 
-  console.log(updateUser);
+  const { isLoading, data, refetch } = useQuery("repoData", () =>
+    fetch(`http://localhost:5000/users?email=${user.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+        // signOut(auth);
+        // localStorage.removeItem("accessToken");
+        // navigate("/");
+        // console.log("Error ");
+      }
+      return res.json();
+    })
+  );
 
-  useEffect(() => {
-    if (user) {
-      fetch(`http://localhost:5000/users?singleusers=${user.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
-        .then((res) => {
-          if (res.status === 401 || res.status === 403) {
-            // signOut(auth);
-            // localStorage.removeItem("accessToken");
-            // navigate("/");
-            // console.log("Error ");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          setUpdateUser(data);
-        });
-    }
-  }, [user]);
+  if (isLoading) return <Loader></Loader>;
 
   return (
     <div className="lg:ml-28 ml-0 flex gap-12 justify-between flex-col lg:flex-row md:flex-row h-full">
@@ -52,23 +45,23 @@ const MyProfile = () => {
           </div>
           <div className="mb-6">
             <p className="font-bold">Email Address</p>
-            <p>morshedul@gmail.com</p>
+            <p> {user.email} </p>
           </div>
           <div className="mb-6">
             <p className="font-bold">Address</p>
-            <p>South Paikpara, Bottola- Home:332/c Road#19 Mirpur dhaka 1216</p>
+            <p> {data.address} </p>
           </div>
           <div className="mb-6">
             <p className="font-bold">Phone</p>
-            <p>2354346566</p>
+            <p>{data.number}</p>
           </div>
           <div className="mb-6">
             <p className="font-bold">Education</p>
-            <p>sdgsd sdgdsg</p>
+            <p>{data.education}</p>
           </div>
           <div className="mb-6">
             <p className="font-bold">LinkdIn Profile</p>
-            <a href="">LinkeDin</a>
+            <a href={data.linkedin}>LinkeDin</a>
           </div>
         </div>
         <button
@@ -79,7 +72,7 @@ const MyProfile = () => {
         </button>
       </div>
       <div className="lg:w-1/2 w-full md:w-full">
-        {showForm && <UpdateForm setShowForm={setShowForm} />}
+        {showForm && <UpdateForm refetch={refetch} setShowForm={setShowForm} />}
       </div>
     </div>
   );

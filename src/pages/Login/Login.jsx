@@ -11,13 +11,15 @@ import {
 import auth from "../../firebase/firebaseInit";
 import Loader from "../../helper/Loader";
 import { useEffect } from "react";
-
+import useToken from "../../Hooks/useToken";
 const Login = () => {
   // const [email, setEmail] = useState("");
   const [user] = useAuthState(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, cuser, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  const [token] = useToken(gUser);
 
   const {
     register,
@@ -28,7 +30,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  if (cuser || gUser) {
+  if (cuser || token) {
     navigate(from, { replace: true });
     toast.success("Sign In Successfull");
   }
@@ -36,7 +38,6 @@ const Login = () => {
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
   };
-
   // successfull login with Token
   useEffect(() => {
     if (user || gUser) {
@@ -74,6 +75,21 @@ const Login = () => {
       </p>
     );
   }
+
+  // // Handle Forget Pass
+  // const handleForgetPassword = () => {
+  //   sendPasswordResetEmail(auth, lemail)
+  //     .then(() => {
+  //       toast.success("Mail Sent!");
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+
+  //       if (errorCode === "auth/missing-email") {
+  //         toast.error("Please Enter Email");
+  //       }
+  //     });
+  // };
 
   return (
     <>
@@ -175,9 +191,7 @@ const Login = () => {
                     </Link>
                   </li>
                 </ul>
-                <Link to="#" className={styles.forgetPass}>
-                  Forget Password?
-                </Link>
+                <p className={styles.forgetPass}>Forget Password?</p>
                 <p className="text-base text-[#adadad]">
                   Not a member yet?
                   <Link
