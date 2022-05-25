@@ -24,6 +24,7 @@ import {
   MyReview,
 } from "./pages/Dashboard";
 import RequireAdmin from "./helper/RequireAdmin";
+import RequireUser from "./helper/RequireUser";
 function App() {
   return (
     <>
@@ -67,8 +68,22 @@ function App() {
           }
         >
           <Route index element={<MyProfile />} />
-          <Route path="review" element={<MyReview />} />
-          <Route path="order" element={<MyOrder />} />
+          <Route
+            path="review"
+            element={
+              <RequireUser>
+                <MyReview />
+              </RequireUser>
+            }
+          />
+          <Route
+            path="order"
+            element={
+              <RequireUser>
+                <MyOrder />
+              </RequireUser>
+            }
+          />
           <Route
             path="users"
             element={

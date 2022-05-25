@@ -1,9 +1,23 @@
 import React from "react";
-import useProductsLoad from "../../../Hooks/useProductLoad";
+import { useQuery } from "react-query";
+import Loader from "../../../helper/Loader";
 import ManageProductTableBody from "./ManageProductTableBody";
 
 const ManageProduct = () => {
-  const [products] = useProductsLoad([]);
+  const { isLoading, data, refetch } = useQuery("reviewData", () =>
+    fetch(`http://localhost:5000/products`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
+      if (res.status === 401 || res.status === 403) {
+      }
+      return res.json();
+    })
+  );
+
+  if (isLoading) return <Loader></Loader>;
 
   return (
     <div className="overflow-x-auto mb-28">
@@ -23,8 +37,12 @@ const ManageProduct = () => {
             <th></th>
           </tr>
         </thead>
-        {products.map((product) => (
-          <ManageProductTableBody key={product._id} product={product} />
+        {data.map((product) => (
+          <ManageProductTableBody
+            key={product._id}
+            product={product}
+            refetch={refetch}
+          />
         ))}
       </table>
     </div>

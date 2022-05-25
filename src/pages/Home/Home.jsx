@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GlobalCSS, useTitle } from "../../helper";
 import CompanyProfile from "./CompanyProfile/CompanyProfile";
 import Banner from "./HomeShared/Banner";
@@ -9,14 +9,27 @@ import {
   MdDry,
   MdReviews,
 } from "react-icons/md";
-import useProductsLoad from "../../Hooks/useProductLoad";
 import Review from "./Review/Review";
 import ImportingHelp from "./ImportingHelp/ImportingHelp";
 import Contact from "./Contact/Contact";
 
 const Home = () => {
   useTitle("Alliance Inc");
-  const [products] = useProductsLoad();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/products`, {
+      method: "GET",
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setProducts(data.slice(0, 6));
+      });
+  }, []);
 
   return (
     <div>

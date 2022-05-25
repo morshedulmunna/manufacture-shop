@@ -1,5 +1,4 @@
 // import React, { useState } from "react";
-import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GrGoogle } from "react-icons/gr";
 import { useForm } from "react-hook-form";

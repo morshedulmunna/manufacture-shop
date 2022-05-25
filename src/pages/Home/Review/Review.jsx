@@ -1,7 +1,7 @@
 import React from "react";
 import "./Review.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper";
+import { Autoplay } from "swiper";
 
 import "swiper/css";
 import "swiper/css/pagination";

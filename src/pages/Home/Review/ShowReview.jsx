@@ -1,8 +1,7 @@
 import React from "react";
-import profile from "../../../assets/images/profile.png";
 
 const ShowReview = ({ review }) => {
-  return <></>;
+  return <>Hello</>;
 };
 
 export default ShowReview;

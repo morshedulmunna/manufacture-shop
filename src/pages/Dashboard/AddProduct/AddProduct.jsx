@@ -253,6 +253,8 @@ const AddProduct = () => {
               <input
                 type="text"
                 placeholder="Type Name"
+                defaultValue="50"
+                readOnly
                 className="input input-bordered w-full"
                 {...register("minOrder", {
                   required: {
