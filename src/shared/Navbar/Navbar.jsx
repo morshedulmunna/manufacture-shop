@@ -24,16 +24,11 @@ const Navbar = () => {
     },
     {
       id: 2,
-      name: "About",
-      to: "/about",
-    },
-    {
-      id: 3,
       name: "Portfolio",
       to: "/portfolio",
     },
     {
-      id: 4,
+      id: 3,
       name: "Blog",
       to: "/blog",
     },

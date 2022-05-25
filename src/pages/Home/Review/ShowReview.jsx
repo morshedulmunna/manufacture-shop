@@ -1,6 +1,7 @@
 import React from "react";
 
 const ShowReview = ({ review }) => {
+  console.log(review);
   return (
     <>
       <div class="card w-96 bg-orange-200 text-primary-content">

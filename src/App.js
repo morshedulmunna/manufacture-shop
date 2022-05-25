@@ -12,7 +12,7 @@ import {
   Dashboard,
   Error404,
   Portfolio,
-  About,
+  Blog,
 } from "./pages/index";
 import {
   AddProduct,
@@ -34,7 +34,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
         <Route
           path="/place-order/:id"
           element={
