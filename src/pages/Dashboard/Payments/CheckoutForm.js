@@ -16,7 +16,7 @@ const CheckOutForm = ({ totalPrice, order }) => {
   const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
-    fetch("https://fierce-mountain-71205.herokuapp.com/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -81,17 +81,14 @@ const CheckOutForm = ({ totalPrice, order }) => {
         orderComplete: order._id,
         transactionId: paymentIntent.id,
       };
-      fetch(
-        `https://fierce-mountain-71205.herokuapp.com/orders/payment/${order._id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          body: JSON.stringify(payment),
-        }
-      )
+      fetch(`http://localhost:5000/orders/payment/${order._id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);

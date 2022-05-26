@@ -5,7 +5,7 @@
 //   const [products, setProducs] = useState([]);
 
 //   useEffect(() => {
-//     axios.get("https://fierce-mountain-71205.herokuapp.com/products").then((res) => {
+//     axios.get("http://localhost:5000/products").then((res) => {
 //       setProducs(res.data);
 //     });
 //   }, []);

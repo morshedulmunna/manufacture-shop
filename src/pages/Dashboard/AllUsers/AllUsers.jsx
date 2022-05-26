@@ -5,7 +5,7 @@ import UserTable from "./UserTable";
 
 const AllUsers = () => {
   const { isLoading, data, refetch } = useQuery("reviewData", () =>
-    fetch(`https://fierce-mountain-71205.herokuapp.com/users`, {
+    fetch(`http://localhost:5000/users`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -28,7 +28,7 @@ const AllUsers = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Status</th>
+            <th>Action</th>
             <th></th>
           </tr>
         </thead>

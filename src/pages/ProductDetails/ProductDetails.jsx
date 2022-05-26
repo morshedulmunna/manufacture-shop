@@ -49,7 +49,7 @@ const ProductDetails = () => {
       email: user.email,
     };
     // Post For Product Item ===>>>
-    const url = `https://fierce-mountain-71205.herokuapp.com/orders/userOrder`;
+    const url = `http://localhost:5000/orders/userOrder`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(addedOrder),
@@ -72,7 +72,7 @@ const ProductDetails = () => {
 
   // Get Data From API
   useEffect(() => {
-    const url = `https://fierce-mountain-71205.herokuapp.com/products/${id}`;
+    const url = `http://localhost:5000/products/${id}`;
     axios
       .get(url)
       .then(function (response) {

@@ -16,7 +16,7 @@ const ManageProductTableBody = ({ product, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://fierce-mountain-71205.herokuapp.com/products/${id}`, {
+        fetch(`http://localhost:5000/products/${id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

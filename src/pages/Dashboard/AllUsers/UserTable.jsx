@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 const UserTable = ({ user, refetch }) => {
   const { name, email, number, roll } = user;
   const makeAdmin = () => {
-    fetch(`https://fierce-mountain-71205.herokuapp.com/users/admin/${email}`, {
+    fetch(`http://localhost:5000/users/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -47,13 +47,13 @@ const UserTable = ({ user, refetch }) => {
               </button>
             )}
           </td>
-          <td>
+          {/* <td>
             {!(roll === "admin") && (
               <button className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize">
                 Remove User
               </button>
             )}
-          </td>
+          </td> */}
         </tr>
       </tbody>
     </>

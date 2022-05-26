@@ -34,7 +34,7 @@ const UpdateForm = ({ setShowForm, refetch }) => {
     // console.log(email);
 
     if (email) {
-      fetch(`https://fierce-mountain-71205.herokuapp.com/users/${email}`, {
+      fetch(`http://localhost:5000/users/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

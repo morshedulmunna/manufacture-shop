@@ -31,7 +31,6 @@ const Signup = () => {
   let from = location.state?.from?.pathname || "/";
   if (token) {
     navigate(from, { replace: true });
-    toast.success("Sign Up Successfull");
   }
 
   let signInError;

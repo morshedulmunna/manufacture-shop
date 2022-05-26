@@ -13,7 +13,7 @@ import ShowReview from "./ShowReview";
 
 const Review = () => {
   const { isLoading, data } = useQuery("reviewData", () =>
-    fetch(`https://fierce-mountain-71205.herokuapp.com/review`, {
+    fetch(`http://localhost:5000/review`, {
       method: "GET",
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {

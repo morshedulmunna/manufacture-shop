@@ -2,11 +2,11 @@ import React from "react";
 
 const ManageAllOrderTable = ({ OrderAll }) => {
   const { _id, email, ordered, price, paid, deliverStatus } = OrderAll;
-  console.log(paid);
+  // console.log(paid);
   const totalPrice = parseInt(ordered) * parseInt(price);
 
   const handleDeliverStatus = () => {
-    fetch(`https://fierce-mountain-71205.herokuapp.com/orders/deliver/${_id}`, {
+    fetch(`http://localhost:5000/orders/deliver/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -34,7 +34,16 @@ const ManageAllOrderTable = ({ OrderAll }) => {
               onClick={handleDeliverStatus}
               className="btn badge border-0 hover:bg-green-800 bg-green-700 btn-xs capitalize"
             >
-              Make Delivery Fast
+              Delivery Pending
+            </button>
+          )}
+
+          {!paid && (
+            <button
+              onClick={handleDeliverStatus}
+              className="btn badge border-0 hover:bg-red-800 bg-red-700 btn-xs capitalize pointer-events-none"
+            >
+              Unpaid
             </button>
           )}
 
