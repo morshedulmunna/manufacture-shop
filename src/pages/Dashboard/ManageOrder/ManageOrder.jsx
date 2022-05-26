@@ -45,6 +45,7 @@ const ManageOrder = () => {
             <th>Price</th>
             {/* <th>Payment Notification</th> */}
             <th>Delivery Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         {allOrder.map((orderall) => (
