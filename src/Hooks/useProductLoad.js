@@ -5,7 +5,7 @@
 //   const [products, setProducs] = useState([]);
 
 //   useEffect(() => {
-//     axios.get("http://localhost:5000/products").then((res) => {
+//     axios.get("https://protected-scrubland-14971.herokuapp.com/products").then((res) => {
 //       setProducs(res.data);
 //     });
 //   }, []);

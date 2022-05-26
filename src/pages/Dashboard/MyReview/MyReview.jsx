@@ -25,7 +25,7 @@ const MyReview = () => {
     };
 
     // Post For Product Item ===>>>
-    const url = `http://localhost:5000/review`;
+    const url = `https://protected-scrubland-14971.herokuapp.com/review`;
     fetch(url, {
       method: "POST",
       headers: {

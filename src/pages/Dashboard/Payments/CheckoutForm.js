@@ -16,14 +16,17 @@ const CheckOutForm = ({ totalPrice, order }) => {
   const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ totalPrice }),
-    })
+    fetch(
+      "https://protected-scrubland-14971.herokuapp.com/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ totalPrice }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -81,14 +84,17 @@ const CheckOutForm = ({ totalPrice, order }) => {
         orderComplete: order._id,
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/orders/payment/${order._id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(payment),
-      })
+      fetch(
+        `https://protected-scrubland-14971.herokuapp.com/orders/payment/${order._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(payment),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);

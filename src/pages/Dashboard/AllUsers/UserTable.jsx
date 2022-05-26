@@ -3,12 +3,15 @@ import toast from "react-hot-toast";
 const UserTable = ({ user, refetch }) => {
   const { name, email, number, roll } = user;
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/users/admin/${email}`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://protected-scrubland-14971.herokuapp.com/users/admin/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 403) {
           toast.error("Failed to Make an Admin");

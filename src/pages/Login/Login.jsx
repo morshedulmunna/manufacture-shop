@@ -39,7 +39,7 @@ const Login = () => {
   // successfull login with Token
   useEffect(() => {
     if (user || gUser) {
-      const url = `http://localhost:5000/login`;
+      const url = `https://protected-scrubland-14971.herokuapp.com/login`;
 
       fetch(url, {
         method: "POST",

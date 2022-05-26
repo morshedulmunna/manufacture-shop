@@ -6,14 +6,17 @@ const ManageAllOrderTable = ({ OrderAll }) => {
   const totalPrice = parseInt(ordered) * parseInt(price);
 
   const handleDeliverStatus = () => {
-    fetch(`http://localhost:5000/orders/deliver/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(),
-    })
+    fetch(
+      `https://protected-scrubland-14971.herokuapp.com/orders/deliver/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

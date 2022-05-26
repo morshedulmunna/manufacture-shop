@@ -5,7 +5,7 @@ import ManageProductTableBody from "./ManageProductTableBody";
 
 const ManageProduct = () => {
   const { isLoading, data, refetch } = useQuery("reviewData", () =>
-    fetch(`http://localhost:5000/products`, {
+    fetch(`https://protected-scrubland-14971.herokuapp.com/products`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

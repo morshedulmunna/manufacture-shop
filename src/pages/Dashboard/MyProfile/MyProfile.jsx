@@ -7,6 +7,7 @@ import Loader from "../../../helper/Loader";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { BsLinkedin } from "react-icons/bs";
+import defaulImage from "../../../assets/images/profile.png";
 
 const MyProfile = () => {
   const [showForm, setShowForm] = useState(false);
@@ -16,12 +17,15 @@ const MyProfile = () => {
   // console.log(user.email);
 
   const { isLoading, data, refetch } = useQuery("repoData", () =>
-    fetch(`http://localhost:5000/users/one?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://protected-scrubland-14971.herokuapp.com/users/one?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");
@@ -41,7 +45,7 @@ const MyProfile = () => {
         <div className="flex items-center flex-col justify-center ">
           <img
             className="mask mask-hexagon w-[200px]"
-            src="https://phero-web.nyc3.cdn.digitaloceanspaces.com/website-prod-images/public/files/1643442519033.jpg"
+            src={defaulImage}
             alt="Profile"
           />
         </div>
