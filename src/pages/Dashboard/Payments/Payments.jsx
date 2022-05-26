@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { GlobalCSS } from "../../../helper";
 import Form from "./Form";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Payments = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const Payments = () => {
     }).then((res) => res.json())
   );
 
-  console.log(order);
+  // console.log(order);
 
   if (isLoading) {
     return "Loading.........";
@@ -72,7 +73,7 @@ const Payments = () => {
               Purchase Details Information
             </p>
             <p className="mb-3">Shipping Information</p>
-            <Form order={order} />
+            <Form totalPrice={totalPrice} order={order} />
           </div>
         </div>
       </div>

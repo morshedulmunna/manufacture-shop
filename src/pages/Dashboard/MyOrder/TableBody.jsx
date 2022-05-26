@@ -19,9 +19,18 @@ const TableBody = ({ order }) => {
 
           <td>{ordered1}</td>
           <td>
-            <button className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize">
-              Cancle
-            </button>
+            {pay ? (
+              <button
+                className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize"
+                disabled
+              >
+                Cancle
+              </button>
+            ) : (
+              <button className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize">
+                Cancle
+              </button>
+            )}
           </td>
           <td>
             {totalPrice && !pay && (

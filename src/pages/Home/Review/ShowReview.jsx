@@ -4,10 +4,13 @@ const ShowReview = ({ review }) => {
   console.log(review);
   return (
     <>
-      <div class="card w-96 bg-orange-200 text-primary-content">
+      <div class="card w-96  text-primary-content">
         <div class="card-body text-black">
-          <h2 class="card-title ">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div className="flex justify-between ">
+            <h2 class="card-title "> {review.userName} </h2>
+            <p> rating : {review.rating}⭐ </p>
+          </div>
+          <p> {review.review.slice(0, 150)} </p>
         </div>
       </div>
     </>
