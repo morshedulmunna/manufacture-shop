@@ -3,6 +3,17 @@
 ## Root Live Site   Link: https://alliance-inc.web.app/
 [Api](https://protected-scrubland-14971.herokuapp.com/)
 
+## if you want to Check Admin Features (Use this Email and Password to login)
+ - Email:
+```
+admin@admin.com
+```
+ - Password: 
+```
+adminadmin
+```
+ 
+
 ### Special Featured:
 - Login and Signup Authentication System. Only Email Pass and Google Login system.
 - Authorization Implementation.
