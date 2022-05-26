@@ -55,7 +55,7 @@ const Form = ({ order, totalPrice }) => {
 
           {/*  */}
           <Elements stripe={stripePromise}>
-            <CheckOutForm totalPrice={totalPrice} />
+            <CheckOutForm totalPrice={totalPrice} order={order} />
           </Elements>
         </div>
       </div>

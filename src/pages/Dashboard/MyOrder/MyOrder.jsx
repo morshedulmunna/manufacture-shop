@@ -11,6 +11,8 @@ const MyOrder = () => {
 
   const [orders, setOrders] = useState([]);
 
+  console.log(orders);
+
   useEffect(() => {
     if (user) {
       fetch(

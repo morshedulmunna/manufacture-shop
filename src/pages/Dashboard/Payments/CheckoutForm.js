@@ -3,7 +3,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import auth from "../../../firebase/firebaseInit";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const CheckOutForm = ({ totalPrice }) => {
+const CheckOutForm = ({ totalPrice, order }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -13,6 +13,7 @@ const CheckOutForm = ({ totalPrice }) => {
   const [success, setSuccess] = useState();
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/create-payment-intent", {
@@ -51,6 +52,7 @@ const CheckOutForm = ({ totalPrice }) => {
 
     setCartError(error?.message || "");
     setSuccess("");
+    setProcessing(true);
     // confirm card payment
     const { paymentIntent, error: intentError } =
       await stripe.confirmCardPayment(clientSecret, {
@@ -65,11 +67,33 @@ const CheckOutForm = ({ totalPrice }) => {
 
     if (intentError) {
       setCartError(intentError?.message);
+      setProcessing(false);
     } else {
       setCartError("");
       setTransactionId(paymentIntent.id);
       console.log(paymentIntent);
       setSuccess(" Congrats! Your Payment is Completed");
+
+      //
+      //
+      //store payment on database
+      const payment = {
+        orderComplete: order._id,
+        transactionId: paymentIntent.id,
+      };
+      fetch(`http://localhost:5000/orders/payment/${order._id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProcessing(false);
+          console.log(data);
+        });
     }
   };
 

@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const TableBody = ({ order }) => {
-  const { OrderID, price, ordered, pay, _id } = order;
-
-  console.log(_id);
+  const { OrderID, price, ordered, paid, _id } = order;
 
   const price1 = parseInt(price);
   const ordered1 = parseInt(ordered);
@@ -19,7 +17,7 @@ const TableBody = ({ order }) => {
 
           <td>{ordered1}</td>
           <td>
-            {pay ? (
+            {paid ? (
               <button
                 className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize"
                 disabled
@@ -33,14 +31,14 @@ const TableBody = ({ order }) => {
             )}
           </td>
           <td>
-            {totalPrice && !pay && (
+            {totalPrice && !paid && (
               <Link to={`/dashboard/payment/${_id}`}>
                 <button className="btn badge border-0 hover:bg-green-800 bg-green-700 btn-xs capitalize">
                   Pay Fast
                 </button>
               </Link>
             )}
-            {totalPrice && pay && (
+            {totalPrice && paid && (
               <button
                 className="btn badge border-0 hover:bg-green-800 bg-green-700 btn-xs capitalize"
                 disabled
