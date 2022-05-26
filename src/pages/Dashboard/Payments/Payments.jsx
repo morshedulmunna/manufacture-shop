@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const Payments = () => {
   const { id } = useParams();
-  const url = `http://localhost:5000/orders/one/${id}`;
+  const url = `https://fierce-mountain-71205.herokuapp.com/orders/one/${id}`;
 
   const { data: order, isLoading } = useQuery(["order", id], () =>
     fetch(url, {

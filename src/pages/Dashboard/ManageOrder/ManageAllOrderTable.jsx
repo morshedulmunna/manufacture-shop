@@ -6,7 +6,7 @@ const ManageAllOrderTable = ({ OrderAll }) => {
   const totalPrice = parseInt(ordered) * parseInt(price);
 
   const handleDeliverStatus = () => {
-    fetch(`http://localhost:5000/orders/deliver/${_id}`, {
+    fetch(`https://fierce-mountain-71205.herokuapp.com/orders/deliver/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
