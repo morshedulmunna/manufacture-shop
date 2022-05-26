@@ -6,13 +6,13 @@ import Skills from "./Skills";
 const Portfolio = () => {
   return (
     <>
-      <div class={`${GlobalCSS.container} mt-12`}>
-        <div class="flex flex-col lg:flex-row md:flex-row gap-10">
+      <div className={`${GlobalCSS.container} mt-12`}>
+        <div className="flex flex-col lg:flex-row md:flex-row gap-10">
           <div className="w-full lg:w-1/2 md:w-1/2">
             <img
               src={Image}
               alt="Profile"
-              class="rounded-lg w-full lg:w-[80%]"
+              className="rounded-lg w-full lg:w-[80%]"
             />
             <h1 className="font-bold text-3xl py-5">
               <span className="font-bold text-orange-500">I'm</span> Morshedul
@@ -50,40 +50,40 @@ const Portfolio = () => {
             <div className="mt-12">
               <h1 className="text-3xl font-bold ">Expertise🥇</h1>
               <div className="flex items-center gap-2 flex-wrap">
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   JavaScript
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   React.js
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Styled Component
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Tailwind
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   HTML5
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   CSS3
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Sass
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Material UI
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   React Bootstrap
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   JWT-Auth
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   firebase
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   context API
                 </span>
               </div>
@@ -91,31 +91,31 @@ const Portfolio = () => {
             <div className="mt-12">
               <h1 className="text-3xl font-bold ">Comfortable🥈 </h1>
               <div className="flex items-center gap-2 flex-wrap">
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Node.js
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Express.js
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   MongoDB
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Redux
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Mongoose
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   next.js
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   framer Motion
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Three.js
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Payment Gateway
                 </span>
               </div>
@@ -123,28 +123,28 @@ const Portfolio = () => {
             <div className="mt-12">
               <h1 className="text-3xl font-bold ">Tools & Technologies🥉</h1>
               <div className="flex items-center gap-2 flex-wrap">
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   GitHub
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   VS Code
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Heroku
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Netlify
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Figma
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Adobe XD
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Illustrator
                 </span>
-                <span class="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
+                <span className="bg-gray-400 px-2 mt-3 mb-2 rounded text-white">
                   Photoshop
                 </span>
               </div>

@@ -1,12 +1,46 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import auth from "../../../firebase/firebaseInit";
 
 const TableBody = ({ order }) => {
   const { OrderID, price, ordered, paid, _id } = order;
 
+  const [user] = useAuthState(auth);
+
   const price1 = parseInt(price);
   const ordered1 = parseInt(ordered);
   const totalPrice = price1 * ordered1;
+
+  const handleDelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/orders/delete/${_id}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              // refetch();
+            }
+            console.log(data);
+          });
+      }
+    });
+  };
 
   return (
     <>
@@ -15,11 +49,9 @@ const TableBody = ({ order }) => {
         <tr>
           <td>{OrderID}</td>
           <td>${totalPrice}</td>
-
           <td>{ordered1}</td>
-          <div className="text-primary">
-            <td>{order?.transactionId}</td>
-          </div>
+          <td>{order?.transactionId}</td>
+
           <td>
             {paid ? (
               <button
@@ -29,7 +61,10 @@ const TableBody = ({ order }) => {
                 Cancle
               </button>
             ) : (
-              <button className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize">
+              <button
+                onClick={handleDelete}
+                className="btn badge border-0 hover:bg-orange-800 bg-orange-700 btn-xs capitalize"
+              >
                 Cancle
               </button>
             )}

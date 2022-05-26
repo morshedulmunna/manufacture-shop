@@ -71,7 +71,7 @@ const CheckOutForm = ({ totalPrice, order }) => {
     } else {
       setCartError("");
       setTransactionId(paymentIntent.id);
-      console.log(paymentIntent);
+      // console.log(paymentIntent);
       setSuccess(" Congrats! Your Payment is Completed");
 
       //
@@ -92,7 +92,7 @@ const CheckOutForm = ({ totalPrice, order }) => {
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);
-          console.log(data);
+          // console.log(data);
         });
     }
   };

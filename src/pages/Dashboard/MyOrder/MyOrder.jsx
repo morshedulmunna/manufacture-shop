@@ -11,7 +11,7 @@ const MyOrder = () => {
 
   const [orders, setOrders] = useState([]);
 
-  console.log(orders);
+  // console.log(orders);
 
   useEffect(() => {
     if (user) {
