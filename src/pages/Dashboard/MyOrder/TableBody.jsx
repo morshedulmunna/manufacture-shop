@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const TableBody = ({ order }) => {
@@ -7,6 +7,7 @@ const TableBody = ({ order }) => {
   const price1 = parseInt(price);
   const ordered1 = parseInt(ordered);
   const totalPrice = price1 * ordered1;
+
   return (
     <>
       <tbody>
@@ -16,6 +17,9 @@ const TableBody = ({ order }) => {
           <td>${totalPrice}</td>
 
           <td>{ordered1}</td>
+          <div className="text-primary">
+            <td>{order?.transactionId}</td>
+          </div>
           <td>
             {paid ? (
               <button

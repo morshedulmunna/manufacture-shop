@@ -43,6 +43,7 @@ const ManageOrder = () => {
             <th>Email</th>
             <th>Quentity</th>
             <th>Price</th>
+            {/* <th>Payment Notification</th> */}
             <th>Delivery Status</th>
           </tr>
         </thead>

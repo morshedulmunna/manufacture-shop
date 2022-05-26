@@ -1,21 +1,52 @@
 import React from "react";
 
 const ManageAllOrderTable = ({ OrderAll }) => {
-  const { OrderID, email, ordered, price } = OrderAll;
+  const { _id, email, ordered, price, paid, deliverStatus } = OrderAll;
+  console.log(paid);
   const totalPrice = parseInt(ordered) * parseInt(price);
+
+  const handleDeliverStatus = () => {
+    fetch(`http://localhost:5000/orders/deliver/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   return (
     <tbody>
       {/* <!-- row 1 --> */}
       <tr>
-        <td>{OrderID}</td>
+        <td>{_id}</td>
         <td>{email}</td>
         <td>{ordered}</td>
         <td>${totalPrice}</td>
         <td>
-          <button className="btn badge border-0 hover:bg-pink-800 bg-pink-700 btn-xs capitalize">
-            Delivery
-          </button>
+          {paid && !deliverStatus && (
+            <button
+              onClick={handleDeliverStatus}
+              className="btn badge border-0 hover:bg-green-800 bg-green-700 btn-xs capitalize"
+            >
+              Make Delivery Fast
+            </button>
+          )}
+
+          {paid && deliverStatus && (
+            <button
+              disabled
+              onClick={handleDeliverStatus}
+              className="btn badge border-0 hover:bg-green-800 bg-green-700 btn-xs capitalize"
+            >
+              Delivary Done
+            </button>
+          )}
         </td>
       </tr>
     </tbody>
