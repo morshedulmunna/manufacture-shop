@@ -18,15 +18,15 @@ adminadmin
 - Login and Signup Authentication System. Only Email Pass and Google Login system.
 - Authorization Implementation.
 - JWT Token Base Protected Route
-- Connect stripe Payment Method System with Card Payment (International). 
+- Connect Stripe Payment Method System with Card Payment (International).
 - Admin & User Protected Route Implementation.
-- Multi User and Admin Use this application.
-- Order Get and Order Management System Immplementation
-- for admin Site : Admin can manage all order , Payment Notification, delivery Process Update.
-- for admin site : admin can add any user to be a Admin
-- user see  all order and payment status. user also can cancle any order if this order not pay.
-- User & admin can update Profile . like name education phone number etc.
-- only admin add any product on this site. and disply home page ony 6 recent added product.
+- Multi-User and Admin Use this application.
+- Order Get and Order Management System Implementation
+- for admin Site: Admin can manage all orders, Payment Notification, and delivery Process Update.
+- for admin site: admin can add any user to be an Admin
+- user to see all orders and payment status. user also can cancel any order if this order is not paid.
+- User & admin can update Profile. like, name education phone number, etc.
+- only admin add any product on this site. and display home page only 6 recently added products.
 - 
 - Deploy Client site Firebase and backend Heroku
 
