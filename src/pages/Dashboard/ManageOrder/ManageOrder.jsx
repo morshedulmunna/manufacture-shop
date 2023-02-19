@@ -10,7 +10,7 @@ const ManageOrder = () => {
   const [allOrder, setAllOrder] = useState([]);
 
   useEffect(() => {
-    fetch(`https://protected-scrubland-14971.herokuapp.com/orders/allorder`, {
+    fetch(`https://alliance.onrender.com/orders/allorder`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

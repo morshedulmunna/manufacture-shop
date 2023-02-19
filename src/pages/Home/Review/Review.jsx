@@ -13,7 +13,7 @@ import ShowReview from "./ShowReview";
 
 const Review = () => {
   const { isLoading, data } = useQuery("reviewData", () =>
-    fetch(`https://protected-scrubland-14971.herokuapp.com/review`, {
+    fetch(`https://alliance.onrender.com/review`, {
       method: "GET",
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {

@@ -1,20 +1,25 @@
 ## Mnufacturer-Wbsite-Client-Site- MERN Stack Website [Live](https://alliance-inc.web.app/).
 
-## Root Live Site   Link: https://alliance-inc.web.app/
-[Api](https://protected-scrubland-14971.herokuapp.com/)
+## Root Live Site Link: https://alliance-inc.web.app/
+
+[Api](https://alliance.onrender.com/)
 
 ## if you want to Check Admin Features (Use this Email and Password to login)
- - Email:
+
+- Email:
+
 ```
 admin@admin.com
 ```
- - Password: 
+
+- Password:
+
 ```
 adminadmin
 ```
- 
 
 ### Special Featured:
+
 - Login and Signup Authentication System. Only Email Pass and Google Login system.
 - Authorization Implementation.
 - JWT Token Base Protected Route
@@ -27,10 +32,11 @@ adminadmin
 - user to see all orders and payment status. user also can cancel any order if this order is not paid.
 - User & admin can update Profile. like, name education phone number, etc.
 - only admin add any product on this site. and display home page only 6 recently added products.
-- 
+-
 - Deploy Client site Firebase and backend Heroku
 
 ### Client Site Tools and Technology:
+
 - React.js
 - firebase
 - axios
@@ -42,13 +48,13 @@ adminadmin
 - JWT Token System
 
 ### Backend Tools and Technology:
+
 - Express
 - MongoDb
 - JWT Token
 - Stripe Payment System
 - nodemon
 - Dotenv
-
 
 I am update and added New Features continuously >>>>
 ©copyright all credit 2022. develop by morshedulmunna

@@ -39,7 +39,7 @@ const Login = () => {
   // successfull login with Token
   useEffect(() => {
     if (user || gUser) {
-      const url = `https://protected-scrubland-14971.herokuapp.com/login`;
+      const url = `https://alliance.onrender.com/login`;
 
       fetch(url, {
         method: "POST",
@@ -90,9 +90,9 @@ const Login = () => {
 
   return (
     <>
-      <section className="bg-[#F4F7FF] ">
+      <section className="bg-[#F4F7FF]  ">
         <div>
-          <div className="flex flex-wrap -mx-4">
+          <div className="flex flex-wrap -mx-4 py-12">
             <div className="w-full px-4">
               <div className={styles.loginWrapper}>
                 <div className="mb-10 md:mb-16 text-center">
@@ -103,7 +103,16 @@ const Login = () => {
                     To Keep connected with us. Please login your personal
                     information.
                   </p>
-                  <p></p>
+                  <div className="mt-6">
+                    <p className="font-bold ">Checking Admin Dashboard Panel</p>
+                    <p>
+                      <span className="font-bold ">Email:</span>{" "}
+                      testadmin@gmail.com
+                    </p>
+                    <p>
+                      <span className="font-bold ">Password:</span> testadmin
+                    </p>
+                  </div>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-6">

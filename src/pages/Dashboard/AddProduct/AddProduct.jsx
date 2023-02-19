@@ -19,7 +19,7 @@ const AddProduct = () => {
     console.log(data);
 
     // Post For Product Item ===>>>
-    const url = `https://protected-scrubland-14971.herokuapp.com/products`;
+    const url = `https://alliance.onrender.com/products`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data),

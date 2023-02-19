@@ -16,7 +16,7 @@ const MyOrder = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://protected-scrubland-14971.herokuapp.com/orders/userOrder?orderUser=${user.email}`,
+        `https://alliance.onrender.com/orders/userOrder?orderUser=${user.email}`,
         {
           method: "GET",
           headers: {

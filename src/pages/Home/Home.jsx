@@ -18,7 +18,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://protected-scrubland-14971.herokuapp.com/products`, {
+    fetch(`https://alliance.onrender.com/products`, {
       method: "GET",
     })
       .then((res) => {

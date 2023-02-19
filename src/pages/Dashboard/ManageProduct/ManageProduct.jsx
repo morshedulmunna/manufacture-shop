@@ -5,7 +5,7 @@ import ManageProductTableBody from "./ManageProductTableBody";
 
 const ManageProduct = () => {
   const { isLoading, data, refetch } = useQuery("reviewData", () =>
-    fetch(`https://protected-scrubland-14971.herokuapp.com/products`, {
+    fetch(`https://alliance.onrender.com/products`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

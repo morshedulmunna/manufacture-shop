@@ -7,7 +7,7 @@ const useToken = (user) => {
     const currentUser = { email: email };
 
     if (email) {
-      fetch(`https://protected-scrubland-14971.herokuapp.com/users/${email}`, {
+      fetch(`https://alliance.onrender.com/users/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

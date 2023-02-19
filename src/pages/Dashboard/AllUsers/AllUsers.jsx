@@ -5,7 +5,7 @@ import UserTable from "./UserTable";
 
 const AllUsers = () => {
   const { isLoading, data, refetch } = useQuery("reviewData", () =>
-    fetch(`https://protected-scrubland-14971.herokuapp.com/users`, {
+    fetch(`https://alliance.onrender.com/users`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

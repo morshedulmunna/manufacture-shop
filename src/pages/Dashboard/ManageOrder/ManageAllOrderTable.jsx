@@ -7,17 +7,14 @@ const ManageAllOrderTable = ({ OrderAll }) => {
   const totalPrice = parseInt(ordered) * parseInt(price);
 
   const handleDeliverStatus = () => {
-    fetch(
-      `https://protected-scrubland-14971.herokuapp.com/orders/deliver/${_id}`,
-      {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(),
-      }
-    )
+    fetch(`https://alliance.onrender.com/orders/deliver/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -35,15 +32,12 @@ const ManageAllOrderTable = ({ OrderAll }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://protected-scrubland-14971.herokuapp.com/orders/delete/${_id}`,
-          {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          }
-        )
+        fetch(`https://alliance.onrender.com/orders/delete/${_id}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {

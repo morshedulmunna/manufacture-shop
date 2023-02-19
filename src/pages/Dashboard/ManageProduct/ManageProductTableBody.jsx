@@ -16,15 +16,12 @@ const ManageProductTableBody = ({ product, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://protected-scrubland-14971.herokuapp.com/products/${id}`,
-          {
-            method: "DELETE",
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          }
-        )
+        fetch(`https://alliance.onrender.com/products/${id}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {

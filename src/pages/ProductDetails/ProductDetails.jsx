@@ -49,7 +49,7 @@ const ProductDetails = () => {
       email: user.email,
     };
     // Post For Product Item ===>>>
-    const url = `https://protected-scrubland-14971.herokuapp.com/orders/userOrder`;
+    const url = `https://alliance.onrender.com/orders/userOrder`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(addedOrder),
@@ -72,7 +72,7 @@ const ProductDetails = () => {
 
   // Get Data From API
   useEffect(() => {
-    const url = `https://protected-scrubland-14971.herokuapp.com/products/${id}`;
+    const url = `https://alliance.onrender.com/products/${id}`;
     axios
       .get(url)
       .then(function (response) {

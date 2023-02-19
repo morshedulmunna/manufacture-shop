@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const Payments = () => {
   const { id } = useParams();
-  const url = `https://protected-scrubland-14971.herokuapp.com/orders/one/${id}`;
+  const url = `https://alliance.onrender.com/orders/one/${id}`;
 
   const { data: order, isLoading } = useQuery(["order", id], () =>
     fetch(url, {

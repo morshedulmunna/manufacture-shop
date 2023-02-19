@@ -25,7 +25,7 @@ const MyReview = () => {
     };
 
     // Post For Product Item ===>>>
-    const url = `https://protected-scrubland-14971.herokuapp.com/review`;
+    const url = `https://alliance.onrender.com/review`;
     fetch(url, {
       method: "POST",
       headers: {
