@@ -1,6 +1,6 @@
-## Mnufacturer-Wbsite-Client-Site- MERN Stack Website [Live](https://alliance-inc.web.app/).
+## Mnufacturer-Wbsite-Client-Site- MERN Stack Website [Live](https://alliance-inc.netlify.app/).
 
-## Root Live Site Link: https://alliance-inc.web.app/
+## Root Live Site Link: https://alliance-inc.netlify.app/
 
 [Api](https://alliance.onrender.com/)
 
@@ -9,13 +9,13 @@
 - Email:
 
 ```
-admin@admin.com
+testadmin@gmail.com
 ```
 
 - Password:
 
 ```
-adminadmin
+testadmin
 ```
 
 ### Special Featured:
