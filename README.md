@@ -1,22 +1,6 @@
-## Mnufacturer-Wbsite-Client-Site- MERN Stack Website [Live](https://alliance-inc.netlify.app/).
+## Mnufacturer-Wbsite-Client-Site- MERN Stack Website https://alliance-inc-manufacturer-website-client-side.vercel.app/
 
-## Root Live Site Link: https://alliance-inc.netlify.app/
 
-[Api](https://alliance-inventory.onrender.com/)
-
-## if you want to Check Admin Features (Use this Email and Password to login)
-
-- Email:
-
-```
-testadmin@gmail.com
-```
-
-- Password:
-
-```
-testadmin
-```
 
 ### Special Featured:
 
