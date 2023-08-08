@@ -16,7 +16,7 @@ const ManageProductTableBody = ({ product, refetch }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://alliance.onrender.com/products/${id}`, {
+        fetch(`https://alliance-inventory.onrender.com/products/${id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

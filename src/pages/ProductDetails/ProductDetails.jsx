@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase/firebaseInit";
 import { signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
+import auth from "../../firebase/firebaseInit";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -49,7 +49,7 @@ const ProductDetails = () => {
       email: user.email,
     };
     // Post For Product Item ===>>>
-    const url = `https://alliance.onrender.com/orders/userOrder`;
+    const url = `https://alliance-inventory.onrender.com/orders/userOrder`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(addedOrder),
@@ -72,7 +72,7 @@ const ProductDetails = () => {
 
   // Get Data From API
   useEffect(() => {
-    const url = `https://alliance.onrender.com/products/${id}`;
+    const url = `https://alliance-inventory.onrender.com/products/${id}`;
     axios
       .get(url)
       .then(function (response) {

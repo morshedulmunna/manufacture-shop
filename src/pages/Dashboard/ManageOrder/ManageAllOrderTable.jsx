@@ -7,7 +7,7 @@ const ManageAllOrderTable = ({ OrderAll }) => {
   const totalPrice = parseInt(ordered) * parseInt(price);
 
   const handleDeliverStatus = () => {
-    fetch(`https://alliance.onrender.com/orders/deliver/${_id}`, {
+    fetch(`https://alliance-inventory.onrender.com/orders/deliver/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -32,7 +32,7 @@ const ManageAllOrderTable = ({ OrderAll }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://alliance.onrender.com/orders/delete/${_id}`, {
+        fetch(`https://alliance-inventory.onrender.com/orders/delete/${_id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

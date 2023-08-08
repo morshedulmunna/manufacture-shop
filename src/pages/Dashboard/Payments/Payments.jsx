@@ -1,13 +1,12 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import { GlobalCSS } from "../../../helper";
 import Form from "./Form";
-import { loadStripe } from "@stripe/stripe-js";
 
 const Payments = () => {
   const { id } = useParams();
-  const url = `https://alliance.onrender.com/orders/one/${id}`;
+  const url = `https://alliance-inventory.onrender.com/orders/one/${id}`;
 
   const { data: order, isLoading } = useQuery(["order", id], () =>
     fetch(url, {

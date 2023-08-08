@@ -1,10 +1,10 @@
 import React from "react";
 import toast from "react-hot-toast";
 
+import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../../firebase/firebaseInit";
-import { signOut } from "firebase/auth";
 
 const MyReview = () => {
   const {
@@ -25,7 +25,7 @@ const MyReview = () => {
     };
 
     // Post For Product Item ===>>>
-    const url = `https://alliance.onrender.com/review`;
+    const url = `https://alliance-inventory.onrender.com/review`;
     fetch(url, {
       method: "POST",
       headers: {

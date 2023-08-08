@@ -1,8 +1,8 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { signOut } from "firebase/auth";
-import auth from "../../../firebase/firebaseInit";
 import { useNavigate } from "react-router-dom";
+import auth from "../../../firebase/firebaseInit";
 import TableBody from "./TableBody";
 
 const MyOrder = () => {
@@ -16,7 +16,7 @@ const MyOrder = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://alliance.onrender.com/orders/userOrder?orderUser=${user.email}`,
+        `https://alliance-inventory.onrender.com/orders/userOrder?orderUser=${user.email}`,
         {
           method: "GET",
           headers: {

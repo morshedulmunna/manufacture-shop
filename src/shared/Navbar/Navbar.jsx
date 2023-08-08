@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from "react";
-import { Link } from "react-router-dom";
-import { RiBarChartHorizontalFill } from "react-icons/ri";
-import { IoMdConstruct } from "react-icons/io";
-import { GlobalCSS } from "../../helper";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../firebase/firebaseInit";
 import { signOut } from "firebase/auth";
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { IoMdConstruct } from "react-icons/io";
+import { RiBarChartHorizontalFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import auth from "../../firebase/firebaseInit";
+import { GlobalCSS } from "../../helper";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -21,16 +21,6 @@ const Navbar = () => {
       id: 1,
       name: "Home",
       to: "/",
-    },
-    {
-      id: 2,
-      name: "Portfolio",
-      to: "/portfolio",
-    },
-    {
-      id: 3,
-      name: "Blog",
-      to: "/blog",
     },
   ];
 
@@ -112,7 +102,7 @@ export default Navbar;
 
 // All Style Object Here====>>
 const styles = {
-  header: "bg-gray-50 relative border-b bg-white z-20 pt-2 ",
+  header: "bg-white py-5 relative  bg-white z-20 pt-5 ",
   nav: "flex items-center justify-between",
   logoWrapper:
     "flex justify-center items-center text-orange-600 cursor-pointer",

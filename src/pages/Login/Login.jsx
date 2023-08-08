@@ -1,16 +1,16 @@
 // import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { GrGoogle } from "react-icons/gr";
-import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import {
   useAuthState,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import { GrGoogle } from "react-icons/gr";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useToken from "../../Hooks/useToken";
 import auth from "../../firebase/firebaseInit";
 import Loader from "../../helper/Loader";
-import { useEffect } from "react";
-import useToken from "../../Hooks/useToken";
 const Login = () => {
   // const [email, setEmail] = useState("");
   const [user] = useAuthState(auth);
@@ -39,7 +39,7 @@ const Login = () => {
   // successfull login with Token
   useEffect(() => {
     if (user || gUser) {
-      const url = `https://alliance.onrender.com/login`;
+      const url = `https://alliance-inventory.onrender.com/login`;
 
       fetch(url, {
         method: "POST",

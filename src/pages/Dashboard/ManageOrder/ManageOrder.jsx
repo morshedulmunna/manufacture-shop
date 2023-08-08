@@ -10,7 +10,7 @@ const ManageOrder = () => {
   const [allOrder, setAllOrder] = useState([]);
 
   useEffect(() => {
-    fetch(`https://alliance.onrender.com/orders/allorder`, {
+    fetch(`https://alliance-inventory.onrender.com/orders/allorder`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

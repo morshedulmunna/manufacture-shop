@@ -1,9 +1,9 @@
 import { signOut } from "firebase/auth";
 import React from "react";
-import toast from "react-hot-toast";
-import { useForm } from "react-hook-form";
-import auth from "../../../firebase/firebaseInit";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import auth from "../../../firebase/firebaseInit";
 
 const AddProduct = () => {
   const {
@@ -19,7 +19,7 @@ const AddProduct = () => {
     console.log(data);
 
     // Post For Product Item ===>>>
-    const url = `https://alliance.onrender.com/products`;
+    const url = `https://alliance-inventory.onrender.com/products`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data),

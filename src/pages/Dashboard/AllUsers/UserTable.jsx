@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 const UserTable = ({ user, refetch }) => {
   const { name, email, number, roll } = user;
   const makeAdmin = () => {
-    fetch(`https://alliance.onrender.com/users/admin/${email}`, {
+    fetch(`https://alliance-inventory.onrender.com/users/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

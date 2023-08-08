@@ -1,19 +1,19 @@
 import React from "react";
-import "./Review.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./Review.css";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
+import { useQuery } from "react-query";
 import { Pagination } from "swiper";
 import Loader from "../../../helper/Loader";
-import { useQuery } from "react-query";
 import ShowReview from "./ShowReview";
 
 const Review = () => {
   const { isLoading, data } = useQuery("reviewData", () =>
-    fetch(`https://alliance.onrender.com/review`, {
+    fetch(`https://alliance-inventory.onrender.com/review`, {
       method: "GET",
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {

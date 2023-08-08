@@ -1,13 +1,13 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../../firebase/firebaseInit";
-import UpdateForm from "./UpdateForm";
-import { useQuery } from "react-query";
-import Loader from "../../../helper/Loader";
-import { useNavigate } from "react-router-dom";
-import { signOut } from "firebase/auth";
 import { BsLinkedin } from "react-icons/bs";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
 import defaulImage from "../../../assets/images/profile.png";
+import auth from "../../../firebase/firebaseInit";
+import Loader from "../../../helper/Loader";
+import UpdateForm from "./UpdateForm";
 
 const MyProfile = () => {
   const [showForm, setShowForm] = useState(false);
@@ -17,12 +17,15 @@ const MyProfile = () => {
   // console.log(user.email);
 
   const { isLoading, data, refetch } = useQuery("repoData", () =>
-    fetch(`https://alliance.onrender.com/users/one?email=${user.email}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => {
+    fetch(
+      `https://alliance-inventory.onrender.com/users/one?email=${user.email}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    ).then((res) => {
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");

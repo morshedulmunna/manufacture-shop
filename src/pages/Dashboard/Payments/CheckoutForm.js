@@ -1,7 +1,7 @@
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import auth from "../../../firebase/firebaseInit";
 import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase/firebaseInit";
 
 const CheckOutForm = ({ totalPrice, order }) => {
   const stripe = useStripe();
@@ -16,7 +16,7 @@ const CheckOutForm = ({ totalPrice, order }) => {
   const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
-    fetch("https://alliance.onrender.com/create-payment-intent", {
+    fetch("https://alliance-inventory.onrender.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -81,14 +81,17 @@ const CheckOutForm = ({ totalPrice, order }) => {
         orderComplete: order._id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://alliance.onrender.com/orders/payment/${order._id}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(payment),
-      })
+      fetch(
+        `https://alliance-inventory.onrender.com/orders/payment/${order._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(payment),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);

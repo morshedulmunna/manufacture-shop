@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -24,7 +24,7 @@ const TableBody = ({ order }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://alliance.onrender.com/orders/delete/${_id}`, {
+        fetch(`https://alliance-inventory.onrender.com/orders/delete/${_id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

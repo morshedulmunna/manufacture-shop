@@ -7,7 +7,7 @@ const useAdmin = (user) => {
 
   useEffect(() => {
     if (email) {
-      fetch(`https://alliance.onrender.com/admin/${email}`, {
+      fetch(`https://alliance-inventory.onrender.com/admin/${email}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

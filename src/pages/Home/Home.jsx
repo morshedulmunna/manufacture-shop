@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { GlobalCSS, useTitle } from "../../helper";
-import CompanyProfile from "./CompanyProfile/CompanyProfile";
-import Banner from "./HomeShared/Banner";
-import Tools from "./Tools/Tools";
 import {
-  MdProductionQuantityLimits,
   MdAccessibilityNew,
   MdDry,
+  MdProductionQuantityLimits,
   MdReviews,
 } from "react-icons/md";
-import Review from "./Review/Review";
-import ImportingHelp from "./ImportingHelp/ImportingHelp";
+import { GlobalCSS, useTitle } from "../../helper";
+import CompanyProfile from "./CompanyProfile/CompanyProfile";
 import Contact from "./Contact/Contact";
+import Banner from "./HomeShared/Banner";
+import ImportingHelp from "./ImportingHelp/ImportingHelp";
+import Review from "./Review/Review";
+import Tools from "./Tools/Tools";
 
 const Home = () => {
   useTitle("Alliance Inc");
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://alliance.onrender.com/products`, {
+    fetch(`https://alliance-inventory.onrender.com/products`, {
       method: "GET",
     })
       .then((res) => {
