@@ -34,7 +34,7 @@ const UpdateForm = ({ setShowForm, refetch }) => {
     // console.log(email);
 
     if (email) {
-      fetch(`https://alliance-inventory.onrender.com/users/${email}`, {
+      fetch(`https://inventory-manage.onrender.com/users/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

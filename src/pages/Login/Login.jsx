@@ -39,7 +39,7 @@ const Login = () => {
   // successfull login with Token
   useEffect(() => {
     if (user || gUser) {
-      const url = `https://alliance-inventory.onrender.com/login`;
+      const url = `https://inventory-manage.onrender.com/login`;
 
       fetch(url, {
         method: "POST",

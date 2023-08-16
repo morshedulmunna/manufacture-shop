@@ -7,7 +7,7 @@ const useToken = (user) => {
     const currentUser = { email: email };
 
     if (email) {
-      fetch(`https://alliance-inventory.onrender.com/users/${email}`, {
+      fetch(`https://inventory-manage.onrender.com/users/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

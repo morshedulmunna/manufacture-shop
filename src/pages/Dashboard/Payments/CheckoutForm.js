@@ -16,7 +16,7 @@ const CheckOutForm = ({ totalPrice, order }) => {
   const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
-    fetch("https://alliance-inventory.onrender.com/create-payment-intent", {
+    fetch("https://inventory-manage.onrender.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -82,7 +82,7 @@ const CheckOutForm = ({ totalPrice, order }) => {
         transactionId: paymentIntent.id,
       };
       fetch(
-        `https://alliance-inventory.onrender.com/orders/payment/${order._id}`,
+        `https://inventory-manage.onrender.com/orders/payment/${order._id}`,
         {
           method: "PATCH",
           headers: {

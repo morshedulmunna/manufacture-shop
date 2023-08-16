@@ -25,7 +25,7 @@ const MyReview = () => {
     };
 
     // Post For Product Item ===>>>
-    const url = `https://alliance-inventory.onrender.com/review`;
+    const url = `https://inventory-manage.onrender.com/review`;
     fetch(url, {
       method: "POST",
       headers: {

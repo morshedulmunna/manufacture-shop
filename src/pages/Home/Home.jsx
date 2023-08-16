@@ -18,7 +18,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://alliance-inventory.onrender.com/products`, {
+    fetch(`https://inventory-manage.onrender.com/products`, {
       method: "GET",
     })
       .then((res) => {

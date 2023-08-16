@@ -5,7 +5,7 @@
 //   const [products, setProducs] = useState([]);
 
 //   useEffect(() => {
-//     axios.get("https://alliance-inventory.onrender.com/products").then((res) => {
+//     axios.get("https://inventory-manage.onrender.com/products").then((res) => {
 //       setProducs(res.data);
 //     });
 //   }, []);

@@ -13,7 +13,7 @@ import ShowReview from "./ShowReview";
 
 const Review = () => {
   const { isLoading, data } = useQuery("reviewData", () =>
-    fetch(`https://alliance-inventory.onrender.com/review`, {
+    fetch(`https://inventory-manage.onrender.com/review`, {
       method: "GET",
     }).then((res) => {
       if (res.status === 401 || res.status === 403) {

@@ -6,7 +6,7 @@ import Form from "./Form";
 
 const Payments = () => {
   const { id } = useParams();
-  const url = `https://alliance-inventory.onrender.com/orders/one/${id}`;
+  const url = `https://inventory-manage.onrender.com/orders/one/${id}`;
 
   const { data: order, isLoading } = useQuery(["order", id], () =>
     fetch(url, {

@@ -2,7 +2,7 @@
 
 ## Root Live Site Link: https://alliance-inc.netlify.app/
 
-[Api](https://alliance-inventory.onrender.com/)
+[Api](https://inventory-manage.onrender.com/)
 
 ## if you want to Check Admin Features (Use this Email and Password to login)
 

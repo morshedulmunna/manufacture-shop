@@ -16,7 +16,7 @@ const MyOrder = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://alliance-inventory.onrender.com/orders/userOrder?orderUser=${user.email}`,
+        `https://inventory-manage.onrender.com/orders/userOrder?orderUser=${user.email}`,
         {
           method: "GET",
           headers: {

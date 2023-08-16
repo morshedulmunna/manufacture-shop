@@ -49,7 +49,7 @@ const ProductDetails = () => {
       email: user.email,
     };
     // Post For Product Item ===>>>
-    const url = `https://alliance-inventory.onrender.com/orders/userOrder`;
+    const url = `https://inventory-manage.onrender.com/orders/userOrder`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(addedOrder),
@@ -72,7 +72,7 @@ const ProductDetails = () => {
 
   // Get Data From API
   useEffect(() => {
-    const url = `https://alliance-inventory.onrender.com/products/${id}`;
+    const url = `https://inventory-manage.onrender.com/products/${id}`;
     axios
       .get(url)
       .then(function (response) {

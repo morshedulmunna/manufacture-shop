@@ -5,7 +5,7 @@ import UserTable from "./UserTable";
 
 const AllUsers = () => {
   const { isLoading, data, refetch } = useQuery("reviewData", () =>
-    fetch(`https://alliance-inventory.onrender.com/users`, {
+    fetch(`https://inventory-manage.onrender.com/users`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

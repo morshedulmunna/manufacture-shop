@@ -19,7 +19,7 @@ const AddProduct = () => {
     console.log(data);
 
     // Post For Product Item ===>>>
-    const url = `https://alliance-inventory.onrender.com/products`;
+    const url = `https://inventory-manage.onrender.com/products`;
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data),

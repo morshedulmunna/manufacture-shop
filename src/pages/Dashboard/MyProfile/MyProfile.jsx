@@ -18,7 +18,7 @@ const MyProfile = () => {
 
   const { isLoading, data, refetch } = useQuery("repoData", () =>
     fetch(
-      `https://alliance-inventory.onrender.com/users/one?email=${user.email}`,
+      `https://inventory-manage.onrender.com/users/one?email=${user.email}`,
       {
         method: "GET",
         headers: {

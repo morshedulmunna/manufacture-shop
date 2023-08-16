@@ -24,7 +24,7 @@ const TableBody = ({ order }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://alliance-inventory.onrender.com/orders/delete/${_id}`, {
+        fetch(`https://inventory-manage.onrender.com/orders/delete/${_id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -5,7 +5,7 @@ import ManageProductTableBody from "./ManageProductTableBody";
 
 const ManageProduct = () => {
   const { isLoading, data, refetch } = useQuery("reviewData", () =>
-    fetch(`https://alliance-inventory.onrender.com/products`, {
+    fetch(`https://inventory-manage.onrender.com/products`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
